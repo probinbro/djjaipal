@@ -1,0 +1,3752 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DJ JAI – Electrify Your World</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ffffff',
+                        secondary: '#000000',
+                        accent: '#666666',
+                        'accent-bright': '#ffffff',
+                        'accent-glow': '#f0f0f0',
+                        dark: '#000000',
+                        'dark-light': '#111111',
+                        'dark-mid': '#1a1a1a',
+                        'glass-light': '#ffffff10',
+                        'glass-dark': '#00000030'
+                    },
+                    fontFamily: {
+                        'display': ['Orbitron', 'monospace'],
+                        'body': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            max-width: 100vw;
+        }
+
+        /* Prevent horizontal overflow globally */
+        * {
+            box-sizing: border-box;
+        }
+
+        main,
+        section {
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+
+        /* Modern scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #ffffff, #cccccc);
+            border-radius: 20px;
+            border: 2px solid #000000;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #f0f0f0, #999999);
+        }
+
+        /* Animated background with music visualizer bars */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        /* Music Visualizer Bars for Background */
+        .music-visualizer-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            padding: 0 2rem;
+            opacity: 0.1;
+        }
+
+        .visualizer-bar {
+            width: 4px;
+            background: linear-gradient(to top, #ffffff, #cccccc);
+            border-radius: 2px;
+            animation: musicPulse 1.5s ease-in-out infinite;
+            min-height: 20px;
+        }
+
+        .visualizer-bar:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .visualizer-bar:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .visualizer-bar:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .visualizer-bar:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .visualizer-bar:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        .visualizer-bar:nth-child(6) {
+            animation-delay: 0.5s;
+        }
+
+        .visualizer-bar:nth-child(7) {
+            animation-delay: 0.6s;
+        }
+
+        .visualizer-bar:nth-child(8) {
+            animation-delay: 0.7s;
+        }
+
+        .visualizer-bar:nth-child(9) {
+            animation-delay: 0.8s;
+        }
+
+        .visualizer-bar:nth-child(10) {
+            animation-delay: 0.9s;
+        }
+
+        @keyframes musicPulse {
+
+            0%,
+            100% {
+                height: 20px;
+                opacity: 0.3;
+            }
+
+            50% {
+                height: 80vh;
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0px, 0px) rotate(0deg);
+            }
+
+            33% {
+                transform: translate(30px, -30px) rotate(120deg);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) rotate(240deg);
+            }
+        }
+
+        /* Refined text effects - less aggressive glow */
+        .neon-text {
+            font-family: 'Orbitron', monospace;
+            color: #ffffff;
+            text-shadow:
+                0 0 10px rgba(255, 255, 255, 0.3),
+                0 0 20px rgba(255, 255, 255, 0.2),
+                0 0 30px rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .neon-text:hover {
+            text-shadow:
+                0 0 15px rgba(255, 255, 255, 0.4),
+                0 0 25px rgba(255, 255, 255, 0.3),
+                0 0 35px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Hero title with subtle gradient and shadow */
+        .hero-title {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 50%, #e0e0e0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow:
+                0 2px 4px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(255, 255, 255, 0.1);
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+        }
+
+        /* Readable section titles */
+        .section-title {
+            color: #ffffff;
+            text-shadow:
+                0 2px 4px rgba(0, 0, 0, 0.5),
+                0 0 15px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Gradient text effect for special elements */
+        .gradient-text {
+            background: linear-gradient(135deg, #ffffff 0%, #cccccc 50%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Glass morphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .glass:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow:
+                0 12px 40px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        /* Gradient borders */
+        .gradient-border {
+            position: relative;
+            background: linear-gradient(45deg, #ffffff, #cccccc, #999999, #ffffff);
+            background-size: 400% 400%;
+            animation: gradientMove 3s ease infinite;
+        }
+
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: #000000;
+            border-radius: inherit;
+            z-index: -1;
+        }
+
+        @keyframes gradientMove {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* 3D hover effects */
+        .hover-3d {
+            transform-style: preserve-3d;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hover-3d:hover {
+            transform: translateY(-8px) rotateX(10deg) rotateY(5deg);
+            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.15);
+        }
+
+        /* Particle animation */
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #ffffff;
+            border-radius: 50%;
+            animation: particleFloat 15s linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0px);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100px) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Custom button styles */
+        .btn-primary {
+            background: linear-gradient(45deg, #ffffff, #cccccc);
+            border: none;
+            color: #000000;
+            font-weight: 600;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            min-height: 44px;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
+            background: linear-gradient(45deg, #f0f0f0, #999999);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Touch-friendly interactive elements */
+        .social-icon,
+        .nav-link,
+        button,
+        .mobile-nav-item {
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .social-icon,
+        button {
+            min-width: 44px;
+            min-height: 44px;
+        }
+
+        /* Improved mobile menu button */
+        #mobile-menu-toggle {
+            min-width: 44px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Hide mobile menu button on desktop */
+        @media (min-width: 768px) {
+            #mobile-menu-toggle {
+                display: none !important;
+            }
+        }
+
+        /* Waveform animation */
+        .waveform {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            height: 40px;
+        }
+
+        .wave-bar {
+            width: 4px;
+            background: linear-gradient(to top, #ffffff, #cccccc);
+            border-radius: 2px;
+            animation: wave 1.5s infinite;
+        }
+
+        .wave-bar:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .wave-bar:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .wave-bar:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .wave-bar:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes wave {
+
+            0%,
+            100% {
+                height: 10px;
+            }
+
+            50% {
+                height: 40px;
+            }
+        }
+
+        /* Enhanced Navigation styles */
+        .sticky-nav {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            z-index: 9999 !important;
+            transform: translateY(0) !important;
+        }
+
+        .nav-bg-blur {
+            background: linear-gradient(135deg,
+                    rgba(0, 0, 0, 0.7) 0%,
+                    rgba(26, 26, 26, 0.8) 50%,
+                    rgba(0, 0, 0, 0.7) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-image: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent) 1;
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        /* Enhanced Logo Container */
+        .logo-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-container::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(45deg, #ffffff, transparent, #ffffff);
+            border-radius: 50%;
+            opacity: 0;
+            animation: logoGlow 3s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes logoGlow {
+
+            0%,
+            100% {
+                opacity: 0;
+                transform: rotate(0deg);
+            }
+
+            50% {
+                opacity: 0.6;
+                transform: rotate(180deg);
+            }
+        }
+
+        /* Enhanced Nav Brand */
+        .nav-brand {
+            position: relative;
+        }
+
+        .nav-logo-text {
+            background: linear-gradient(135deg, #ffffff 0%, #cccccc 50%, #ffffff 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+        }
+
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* Enhanced Navigation Links */
+        .nav-link-enhanced {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .nav-text {
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .nav-indicator {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ffffff, transparent);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 1px;
+        }
+
+        .nav-link-enhanced::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.05) 0%,
+                    rgba(255, 255, 255, 0.1) 50%,
+                    rgba(255, 255, 255, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: inherit;
+        }
+
+        .nav-link-enhanced:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15);
+        }
+
+        .nav-link-enhanced:hover::before {
+            opacity: 1;
+        }
+
+        .nav-link-enhanced:hover .nav-text {
+            color: #ffffff;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+        }
+
+        .nav-link-enhanced:hover .nav-indicator {
+            width: 100%;
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+        }
+
+        /* Enhanced Primary Navigation Button */
+        .btn-primary-nav {
+            position: relative;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 50%, #ffffff 100%);
+            background-size: 200% 200%;
+            color: #000000;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow:
+                0 4px 15px rgba(255, 255, 255, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            animation: btnGlow 4s ease-in-out infinite;
+        }
+
+        .btn-glow {
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(45deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.4),
+                    transparent,
+                    rgba(255, 255, 255, 0.4),
+                    transparent);
+            border-radius: inherit;
+            opacity: 0;
+            animation: btnGlowPulse 3s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes btnGlow {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+                box-shadow:
+                    0 4px 15px rgba(255, 255, 255, 0.2),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            }
+
+            50% {
+                background-position: 100% 50%;
+                box-shadow:
+                    0 8px 25px rgba(255, 255, 255, 0.4),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            }
+        }
+
+        @keyframes btnGlowPulse {
+
+            0%,
+            100% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .btn-primary-nav:hover {
+            transform: translateY(-3px);
+            box-shadow:
+                0 12px 35px rgba(255, 255, 255, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            background: linear-gradient(135deg, #f8f8f8 0%, #e0e0e0 50%, #f8f8f8 100%);
+        }
+
+        .btn-primary-nav:hover .btn-glow {
+            opacity: 0.8;
+        }
+
+        /* Enhanced Mobile Menu Toggle */
+        .nav-mobile-toggle {
+            position: relative;
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .nav-mobile-toggle::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .hamburger-line {
+            width: 20px;
+            height: 2px;
+            background: linear-gradient(90deg, #ffffff, #cccccc);
+            border-radius: 1px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-mobile-toggle:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-mobile-toggle:hover::before {
+            opacity: 1;
+        }
+
+        .nav-mobile-toggle:hover .hamburger-line {
+            background: linear-gradient(90deg, #ffffff, #ffffff);
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+        }
+
+        /* Navbar scroll effect */
+        .navbar-scrolled .nav-bg-blur {
+            background: linear-gradient(135deg,
+                    rgba(0, 0, 0, 0.9) 0%,
+                    rgba(26, 26, 26, 0.95) 50%,
+                    rgba(0, 0, 0, 0.9) 100%);
+            backdrop-filter: blur(25px);
+            box-shadow:
+                0 12px 40px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        /* Active navigation link state */
+        .nav-link-enhanced.active .nav-text {
+            color: #ffffff;
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+        }
+
+        .nav-link-enhanced.active .nav-indicator {
+            width: 100%;
+            background: linear-gradient(90deg, #ffffff, #f0f0f0, #ffffff);
+            box-shadow:
+                0 0 15px rgba(255, 255, 255, 0.8),
+                0 0 30px rgba(255, 255, 255, 0.4);
+            animation: indicatorPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes indicatorPulse {
+
+            0%,
+            100% {
+                box-shadow:
+                    0 0 15px rgba(255, 255, 255, 0.8),
+                    0 0 30px rgba(255, 255, 255, 0.4);
+            }
+
+            50% {
+                box-shadow:
+                    0 0 20px rgba(255, 255, 255, 1),
+                    0 0 40px rgba(255, 255, 255, 0.6);
+            }
+        }
+
+        .nav-link-enhanced.active::before {
+            opacity: 0.6;
+        }
+
+        /* Responsive navigation enhancements */
+        @media (max-width: 768px) {
+            .nav-bg-blur {
+                backdrop-filter: blur(15px);
+                background: linear-gradient(135deg,
+                        rgba(0, 0, 0, 0.8) 0%,
+                        rgba(26, 26, 26, 0.9) 50%,
+                        rgba(0, 0, 0, 0.8) 100%);
+            }
+
+            .logo-container img {
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+
+            .nav-logo-text {
+                font-size: 1.5rem;
+            }
+        }
+
+        .nav-link {
+            position: relative;
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #ffffff, #cccccc);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover {
+            color: #cccccc;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Loading animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0A0A0A;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 1s ease;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid #ffffff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Mobile Menu Styles */
+        .mobile-menu-overlay {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .mobile-menu-container {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: min(320px, 85vw);
+            width: 320px;
+        }
+
+        .mobile-nav-item {
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-left: 3px solid #ffffff;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-close:hover {
+            background: #ffffff;
+            color: black;
+            transform: rotate(90deg);
+        }
+
+        /* Improved text readability */
+        .text-readable {
+            color: #f5f5f5;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+            line-height: 1.6;
+        }
+
+        .text-secondary-readable {
+            color: #e0e0e0;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .text-muted-readable {
+            color: #c0c0c0;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Better contrast for content text */
+        .content-text {
+            color: #f0f0f0;
+            line-height: 1.7;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Refined heading styles */
+        .heading-primary {
+            color: #ffffff;
+            text-shadow:
+                0 2px 4px rgba(0, 0, 0, 0.4),
+                0 0 20px rgba(255, 255, 255, 0.1);
+            font-weight: 700;
+        }
+
+        .heading-secondary {
+            color: #f5f5f5;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: 600;
+        }
+
+        /* Responsive design */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 4rem !important;
+            }
+
+            .container {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem !important;
+            }
+
+            .glass {
+                margin: 1rem;
+                padding: 1.5rem !important;
+                max-width: calc(100vw - 2rem);
+                box-sizing: border-box;
+            }
+
+            .hero-title {
+                font-size: 3.5rem !important;
+                line-height: 1.1;
+            }
+
+            .hero-subtitle {
+                font-size: 1.25rem !important;
+            }
+
+            .btn-primary {
+                padding: 0.875rem 1.5rem;
+                font-size: 0.875rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem !important;
+            }
+
+            .grid-responsive {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+
+            .mobile-hidden {
+                display: none !important;
+            }
+
+            .mobile-center {
+                text-align: center !important;
+            }
+
+            .mobile-full {
+                width: 100% !important;
+            }
+
+            /* Prevent horizontal overflow */
+            * {
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+
+            .container {
+                max-width: 100vw;
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.5rem !important;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem !important;
+            }
+
+            .glass {
+                margin: 0.5rem;
+                padding: 1rem !important;
+                max-width: calc(100vw - 1rem);
+            }
+
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+                max-width: 100vw;
+            }
+
+            .btn-primary {
+                padding: 0.75rem 1.25rem;
+                font-size: 0.875rem;
+                display: block;
+                text-align: center;
+                margin: 0.5rem 0;
+            }
+
+            .mobile-stack {
+                flex-direction: column !important;
+                gap: 1rem !important;
+            }
+
+            .text-responsive {
+                font-size: 0.875rem !important;
+            }
+
+            .mobile-menu-container {
+                max-width: min(280px, 90vw);
+                width: 280px;
+            }
+
+            /* Ensure no element exceeds viewport */
+            body {
+                width: 100vw;
+                overflow-x: hidden;
+            }
+
+            * {
+                max-width: 100vw;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+
+            /* Fix for grid layouts on small screens */
+            .grid {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .neon-text {
+                font-size: 3rem !important;
+            }
+
+            .glass {
+                margin: 1rem;
+            }
+        }
+
+        /* Music player styles */
+        .music-player {
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #ffffff, #cccccc);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+
+        /* Social media hover effects */
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            filter: drop-shadow(0 10px 20px rgba(255, 255, 255, 0.5));
+        }
+
+        /* Modern Gallery Styles */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(6, 120px);
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-large {
+            grid-column: span 6;
+            grid-row: span 4;
+        }
+
+        .gallery-medium {
+            grid-column: span 3;
+            grid-row: span 3;
+        }
+
+        .gallery-small {
+            grid-column: span 3;
+            grid-row: span 2;
+        }
+
+        .gallery-wide {
+            grid-column: span 6;
+            grid-row: span 2;
+        }
+
+        .gallery-image-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border-radius: inherit;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: brightness(0.8) contrast(1.1) saturate(1.2);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.05) 0%,
+                    rgba(255, 255, 255, 0.15) 50%,
+                    rgba(255, 255, 255, 0.05) 100%);
+            opacity: 0;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: inherit;
+        }
+
+        .gallery-zoom-icon {
+            position: relative;
+            z-index: 3;
+            color: #ffffff;
+            background: rgba(0, 0, 0, 0.4);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: scale(0.5);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .gallery-pulse-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            opacity: 0;
+            animation: pulseRing 2s infinite;
+        }
+
+        @keyframes pulseRing {
+            0% {
+                transform: translate(-50%, -50%) scale(0.5);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(255, 255, 255, 0.1);
+            z-index: 10;
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.1);
+            filter: brightness(1) contrast(1.2) saturate(1.4);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:hover .gallery-zoom-icon {
+            transform: scale(1);
+            background: rgba(255, 255, 255, 0.9);
+            color: #000000;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .gallery-item:hover .gallery-pulse-ring {
+            animation-play-state: running;
+        }
+
+        /* Floating Gallery Button */
+        .floating-gallery-btn {
+            position: relative;
+            display: inline-block;
+            padding: 18px 40px;
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-content {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .btn-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.1) 0%,
+                    rgba(255, 255, 255, 0.05) 50%,
+                    rgba(255, 255, 255, 0.1) 100%);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+
+        .btn-glow-effect {
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(45deg,
+                    transparent 0%,
+                    rgba(255, 255, 255, 0.4) 25%,
+                    transparent 50%,
+                    rgba(255, 255, 255, 0.4) 75%,
+                    transparent 100%);
+            border-radius: inherit;
+            opacity: 0;
+            animation: btnGlowMove 3s ease-in-out infinite;
+        }
+
+        @keyframes btnGlowMove {
+
+            0%,
+            100% {
+                opacity: 0;
+                transform: rotate(0deg);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: rotate(180deg);
+            }
+        }
+
+        .floating-gallery-btn:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.6);
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .floating-gallery-btn:hover .btn-bg {
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.2) 0%,
+                    rgba(255, 255, 255, 0.1) 50%,
+                    rgba(255, 255, 255, 0.2) 100%);
+        }
+
+        .floating-gallery-btn:hover .btn-content {
+            transform: scale(1.05);
+        }
+
+        .floating-gallery-btn:hover .btn-glow-effect {
+            opacity: 1;
+        }
+
+        /* Responsive Gallery */
+        @media (max-width: 1024px) {
+            .gallery-grid {
+                grid-template-columns: repeat(8, 1fr);
+                grid-template-rows: repeat(8, 100px);
+                gap: 12px;
+            }
+
+            .gallery-large {
+                grid-column: span 4;
+                grid-row: span 4;
+            }
+
+            .gallery-medium {
+                grid-column: span 4;
+                grid-row: span 3;
+            }
+
+            .gallery-wide {
+                grid-column: span 8;
+                grid-row: span 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(12, 80px);
+                gap: 10px;
+            }
+
+            .gallery-large {
+                grid-column: span 4;
+                grid-row: span 4;
+            }
+
+            .gallery-medium {
+                grid-column: span 2;
+                grid-row: span 3;
+            }
+
+            .gallery-small {
+                grid-column: span 2;
+                grid-row: span 2;
+            }
+
+            .gallery-wide {
+                grid-column: span 4;
+                grid-row: span 2;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(16, 120px);
+                gap: 8px;
+            }
+
+            .gallery-large,
+            .gallery-medium,
+            .gallery-small,
+            .gallery-wide {
+                grid-column: span 2;
+                grid-row: span 2;
+            }
+        }
+
+        /* Event Modal Styles */
+        .event-modal-image {
+            border-radius: 20px;
+            object-fit: cover;
+            width: 100%;
+            height: 300px;
+        }
+
+        .event-detail-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .event-highlight {
+            background: linear-gradient(45deg, #ffffff, #666666);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+        }
+
+        /* Gallery Modal Styles */
+        .gallery-clickable {
+            transition: all 0.3s ease;
+        }
+
+        .gallery-clickable:hover {
+            transform: scale(1.02);
+        }
+
+        #galleryModal {
+            backdrop-filter: blur(20px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        #galleryModal.hidden {
+            animation: fadeOut 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+        #modalImage {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Modal button hover effects */
+        #closeGalleryModal:hover,
+        #prevImage:hover,
+        #nextImage:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        /* Responsive modal adjustments */
+        @media (max-width: 768px) {
+            #galleryModal .glass {
+                margin: 1rem;
+                padding: 1rem;
+            }
+
+            #modalImage {
+                max-height: 70vh;
+            }
+
+            #closeGalleryModal,
+            #prevImage,
+            #nextImage {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        /* Animated Gradient Background as Video Fallback */
+        .animated-gradient-bg {
+            background: linear-gradient(-45deg,
+                    #000000, #1a1a1a, #330066, #1a1a1a,
+                    #000000, #0d1b2a, #1a1a1a, #000000);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        .gradient-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg,
+                    transparent, rgba(255, 255, 255, 0.02), transparent,
+                    rgba(255, 255, 255, 0.01), transparent, rgba(255, 255, 255, 0.03),
+                    transparent, rgba(255, 255, 255, 0.01), transparent);
+            background-size: 200% 200%;
+            animation: gradientMove 8s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes gradientMove {
+
+            0%,
+            100% {
+                background-position: 0% 0%;
+                opacity: 0.3;
+            }
+
+            25% {
+                background-position: 100% 0%;
+                opacity: 0.5;
+            }
+
+            50% {
+                background-position: 100% 100%;
+                opacity: 0.4;
+            }
+
+            75% {
+                background-position: 0% 100%;
+                opacity: 0.6;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-overlay" id="loading">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+
+    <!-- Music Visualizer Background -->
+    <div class="music-visualizer-bg">
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+    </div>
+
+    <!-- Floating Particles -->
+    <div id="particles">
+        <!-- Particles will be generated by JavaScript -->
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 transition-all duration-500 sticky-nav" id="navbar">
+        <!-- Enhanced Navigation Background -->
+        <div class="nav-bg-blur absolute inset-0 bg-black/30 backdrop-blur-xl border-b border-white/10 shadow-2xl">
+        </div>
+
+        <!-- Navigation Content -->
+        <div class="container mx-auto px-4 md:px-6 py-4 relative z-10">
+            <div class="flex justify-between items-center">
+                <!-- Enhanced Logo Section -->
+                <div class="flex items-center space-x-4 group">
+                    <div class="logo-container relative">
+                        <img src="/DJ profile.webp" alt="DJ JAI Logo"
+                            class="w-12 h-12 md:w-14 md:h-14 object-cover rounded-full border-2 border-white/30 filter invert group-hover:scale-110 transition-all duration-300 shadow-lg shadow-white/20">
+                        <div class="absolute inset-0 rounded-full bg-white/10 animate-pulse"></div>
+                    </div>
+                    <div class="nav-brand">
+                        <div class="text-3xl md:text-4xl font-display font-bold nav-logo-text">JAI</div>
+                        <div class="text-xs text-white/70 hidden lg:block font-medium tracking-wider">DJ • PRODUCER
+                        </div>
+                    </div>
+                    <div class="waveform hidden md:flex ml-4">
+                        <div class="wave-bar bg-gradient-to-t from-white/60 to-white/90"></div>
+                        <div class="wave-bar bg-gradient-to-t from-white/60 to-white/90"></div>
+                        <div class="wave-bar bg-gradient-to-t from-white/60 to-white/90"></div>
+                        <div class="wave-bar bg-gradient-to-t from-white/60 to-white/90"></div>
+                        <div class="wave-bar bg-gradient-to-t from-white/60 to-white/90"></div>
+                    </div>
+                </div>
+
+                <!-- Enhanced Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8 lg:space-x-10">
+                    <a href="#home" class="nav-link-enhanced">
+                        <span class="nav-text">Home</span>
+                        <div class="nav-indicator"></div>
+                    </a>
+                    <a href="#about" class="nav-link-enhanced">
+                        <span class="nav-text">About</span>
+                        <div class="nav-indicator"></div>
+                    </a>
+                    <a href="#music" class="nav-link-enhanced">
+                        <span class="nav-text">Music</span>
+                        <div class="nav-indicator"></div>
+                    </a>
+                    <a href="#events" class="nav-link-enhanced">
+                        <span class="nav-text">Events</span>
+                        <div class="nav-indicator"></div>
+                    </a>
+                    <a href="./gallery.html" class="nav-link-enhanced">
+                        <span class="nav-text">Gallery</span>
+                        <div class="nav-indicator"></div>
+                    </a>
+                    <a href="#services" class="nav-link-enhanced">
+                        <span class="nav-text">Services</span>
+                        <div class="nav-indicator"></div>
+                    </a>
+                    <a href="#contact" class="btn-primary-nav">
+                        <i class="fas fa-calendar-plus mr-2"></i>
+                        <span>Book Now</span>
+                        <div class="btn-glow"></div>
+                    </a>
+                </div>
+
+                <!-- Enhanced Mobile Menu Button -->
+                <button class="md:hidden nav-mobile-toggle" id="mobile-menu-toggle">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="md:hidden mobile-menu-overlay fixed inset-0 bg-black bg-opacity-50 transform translate-x-full transition-transform duration-300 z-40"
+            id="mobile-menu-overlay"></div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden mobile-menu-container fixed top-0 right-0 h-full transform translate-x-full transition-transform duration-300 z-50"
+            id="mobile-menu">
+            <!-- Close Button -->
+            <div class="mobile-menu-close" id="mobile-menu-close">
+                <i class="fas fa-times"></i>
+            </div>
+
+            <!-- Menu Header -->
+            <div class="p-6 pt-16 border-b border-gray-700/50 bg-gradient-to-r from-black/20 to-gray-900/20">
+                <div class="flex items-center justify-center space-x-3 mb-4">
+                    <img src="WhatsApp Image 2025-07-27 at 3.16.39 PM.jpeg" alt="DJ JAI Logo"
+                        class="w-12 h-12 object-cover rounded-full border-2 border-white/30 filter invert shadow-lg shadow-white/20">
+                    <div class="text-2xl font-display font-bold text-white">JAI</div>
+                </div>
+                <div class="text-center text-gray-400 text-sm">DJ • Producer • Artist</div>
+            </div>
+
+            <!-- Menu Items -->
+            <div class="flex flex-col">
+                <a href="#home" class="mobile-nav-item nav-link mobile-nav-link flex items-center">
+                    <i class="fas fa-home mr-3 text-primary"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#about" class="mobile-nav-item nav-link mobile-nav-link flex items-center">
+                    <i class="fas fa-user mr-3 text-secondary"></i>
+                    <span>About</span>
+                </a>
+                <a href="#music" class="mobile-nav-item nav-link mobile-nav-link flex items-center">
+                    <i class="fas fa-music mr-3 text-accent"></i>
+                    <span>Music</span>
+                </a>
+                <a href="#events" class="mobile-nav-item nav-link mobile-nav-link flex items-center">
+                    <i class="fas fa-calendar mr-3 text-primary"></i>
+                    <span>Events</span>
+                </a>
+                <a href="./gallery.html" class="mobile-nav-item nav-link mobile-nav-link flex items-center">
+                    <i class="fas fa-images mr-3 text-secondary"></i>
+                    <span>Gallery</span>
+                </a>
+                <a href="#services" class="mobile-nav-item nav-link mobile-nav-link flex items-center">
+                    <i class="fas fa-cogs mr-3 text-accent"></i>
+                    <span>Services</span>
+                </a>
+            </div>
+
+            <!-- Bottom CTA -->
+            <div class="absolute bottom-0 left-0 right-0 p-6 border-t border-gray-700">
+                <a href="#contact" class="btn-primary w-full text-center block mobile-nav-link">
+                    <i class="fas fa-phone mr-2"></i>
+                    Book Now
+                </a>
+
+                <!-- Social Links -->
+                <div class="flex justify-center space-x-4 mt-4">
+                    <a href="https://instagram.com/djjai"
+                        class="social-icon w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-primary">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://open.spotify.com/artist/djjai"
+                        class="social-icon w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary">
+                        <i class="fab fa-spotify"></i>
+                    </a>
+                    <a href="https://soundcloud.com/djjai"
+                        class="social-icon w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center text-accent">
+                        <i class="fab fa-soundcloud"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-dark via-dark-light to-dark opacity-90"></div>
+
+            <!-- Hero Video Background -->
+            <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-50"
+                style="z-index: 1; transform: scale(1.1);" poster="" preload="metadata" id="hero-video">
+                <source src="./DJ_Hands_Electric_Sparks_Loop.mp4" type="video/mp4">
+    
+            </video>
+
+            <!-- Animated CSS Background as fallback -->
+            <div class="absolute inset-0 animated-gradient-bg opacity-40" style="z-index: 1;" id="fallback-bg">
+                <div class="gradient-animation"></div>
+            </div>
+
+            <script>
+                // Handle video loading and fallback
+                const video = document.getElementById('hero-video');
+                const fallbackBg = document.getElementById('fallback-bg');
+
+                // Hide fallback initially
+                fallbackBg.style.display = 'none';
+
+                // Show fallback if video fails to load
+                video.addEventListener('error', function () {
+                    console.log('Video failed to load, showing animated background');
+                    video.style.display = 'none';
+                    fallbackBg.style.display = 'block';
+                });
+
+                // Hide fallback once video loads successfully
+                video.addEventListener('loadeddata', function () {
+                    console.log('Video loaded successfully');
+                    fallbackBg.style.display = 'none';
+                });
+
+                // Fallback timeout - if video doesn't load in 5 seconds, show background
+                setTimeout(function () {
+                    if (video.readyState === 0) {
+                        console.log('Video loading timeout, showing animated background');
+                        video.style.display = 'none';
+                        fallbackBg.style.display = 'block';
+                    }
+                }, 5000);
+            </script>
+
+            <!-- Interactive Music Particle Canvas -->
+            <canvas id="particle-canvas" class="absolute inset-0 w-full h-full" style="z-index: 2;"></canvas>
+
+            <div class="relative text-center px-4 md:px-6" data-aos="fade-up" style="z-index: 3;">
+                <h1
+                    class="hero-title text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-display font-black mb-4 md:mb-6">
+                    DJ JAI
+                </h1>
+                <p
+                    class="hero-subtitle text-lg sm:text-xl md:text-3xl font-light mb-6 md:mb-8 text-gray-200 max-w-4xl mx-auto leading-relaxed">
+                    Electrify Your World with Sonic Excellence
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mobile-stack">
+                    <a href="#music" class="btn-primary text-base md:text-lg px-6 md:px-8 py-3 md:py-4 mobile-full">
+                        <i class="fas fa-music mr-2"></i>
+                        Listen Now
+                    </a>
+                    <a href="#events"
+                        class="glass px-6 md:px-8 py-3 md:py-4 rounded-full border border-white hover:bg-white/20 transition-all mobile-full text-center">
+                        <i class="fas fa-headphones mr-2"></i>
+                        View Events
+                    </a>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce"
+                style="z-index: 3;">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-16 md:py-20 lg:py-32 relative overflow-hidden">
+            <!-- Animated Background Elements -->
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-primary rounded-full blur-3xl animate-pulse"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-48 h-48 bg-secondary rounded-full blur-3xl animate-pulse"
+                    style="animation-delay: 1s;"></div>
+            </div>
+
+            <div class="container mx-auto px-4 md:px-6 relative z-10">
+                <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
+                    <h2 class="section-title text-4xl md:text-5xl font-display font-bold mb-4 md:mb-6">
+                        Behind The Decks</h2>
+                    <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+                        Discover the passion, skill, and dedication that drives DJ JAI's electrifying performances
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center mb-16 md:mb-20">
+                    <!-- Enhanced Image Section -->
+                    <div data-aos="fade-right" class="relative order-2 lg:order-1">
+                        <div class="relative group">
+                            <!-- Main Image -->
+                            <div class="relative overflow-hidden rounded-3xl">
+                                <img src="./Asstes/Dj demo.jpg" alt="DJ JAI"
+                                    class="w-full h-[400px] md:h-[600px] object-cover transition-transform duration-700 group-hover:scale-110">
+                                <!-- Gradient Overlay -->
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent">
+                                </div>
+                                <!-- DJ Equipment Overlay -->
+                                <div class="absolute bottom-4 md:bottom-6 left-4 md:left-6 right-4 md:right-6">
+                                    <div class="glass p-3 md:p-4 rounded-2xl backdrop-blur-md">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                                            <span class="text-sm font-semibold">Currently Live</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Floating Stats Cards -->
+                            <div
+                                class="absolute -top-4 md:-top-6 -right-4 md:-right-6 glass p-4 md:p-6 rounded-2xl hover-3d">
+                                <div class="text-center">
+                                    <div class="text-2xl md:text-3xl font-bold text-primary">10+</div>
+                                    <div class="text-xs md:text-sm text-gray-400">Years</div>
+                                </div>
+                            </div>
+
+                            <!-- Music Waveform Animation - Hidden on mobile -->
+                            <div class="absolute top-1/2 -right-8 transform -translate-y-1/2 mobile-hidden">
+                                <div class="glass p-4 rounded-xl">
+                                    <div class="waveform">
+                                        <div class="wave-bar h-6"></div>
+                                        <div class="wave-bar h-8"></div>
+                                        <div class="wave-bar h-4"></div>
+                                        <div class="wave-bar h-10"></div>
+                                        <div class="wave-bar h-6"></div>
+                                        <div class="wave-bar h-8"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Enhanced Content Section -->
+                    <div data-aos="fade-left" class="space-y-6 md:space-y-8 order-1 lg:order-2">
+                        <div class="glass p-6 md:p-8 rounded-3xl hover-3d">
+                            <div class="mb-4 md:mb-6">
+                                <h3 class="heading-secondary text-2xl md:text-3xl font-bold mb-3 md:mb-4">The Artist's
+                                    Journey
+                                </h3>
+                                <p class="content-text text-base md:text-lg leading-relaxed text-responsive">
+                                    From underground raves to international festivals, DJ JAI has been pushing the
+                                    boundaries of electronic music for over a decade. Known for innovative mixing
+                                    techniques and an unparalleled ability to read the crowd, JAI creates sonic
+                                    experiences that transcend the ordinary.
+                                </p>
+                            </div>
+
+                            <!-- Skills Bars -->
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-sm font-semibold">Mixing & Beatmatching</span>
+                                        <span class="text-sm text-primary">95%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-700 rounded-full h-2">
+                                        <div class="bg-gradient-to-r from-primary to-secondary h-2 rounded-full"
+                                            style="width: 95%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-sm font-semibold">Crowd Reading</span>
+                                        <span class="text-sm text-secondary">98%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-700 rounded-full h-2">
+                                        <div class="bg-gradient-to-r from-secondary to-accent h-2 rounded-full"
+                                            style="width: 98%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-sm font-semibold">Music Production</span>
+                                        <span class="text-sm text-accent">90%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-700 rounded-full h-2">
+                                        <div class="bg-gradient-to-r from-accent to-primary h-2 rounded-full"
+                                            style="width: 90%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Achievement Cards -->
+                        <div class="grid grid-cols-2 gap-3 md:gap-4 grid-responsive">
+                            <div class="glass p-4 md:p-6 rounded-2xl text-center hover-3d mobile-center">
+                                <div class="text-2xl md:text-3xl font-bold text-primary mb-1 md:mb-2">500+</div>
+                                <div class="text-xs md:text-sm text-gray-200">Live Shows</div>
+                            </div>
+                            <div class="glass p-4 md:p-6 rounded-2xl text-center hover-3d mobile-center">
+                                <div class="text-2xl md:text-3xl font-bold text-primary mb-1 md:mb-2">50+</div>
+                                <div class="text-xs md:text-sm text-gray-200">Countries</div>
+                            </div>
+                            <div class="glass p-4 md:p-6 rounded-2xl text-center hover-3d mobile-center">
+                                <div class="text-2xl md:text-3xl font-bold text-primary mb-1 md:mb-2">50+</div>
+                                <div class="text-xs md:text-sm text-gray-200">Tracks</div>
+                            </div>
+                            <div class="glass p-4 md:p-6 rounded-2xl text-center hover-3d mobile-center">
+                                <div class="text-2xl md:text-3xl font-bold text-primary mb-1 md:mb-2">1M+</div>
+                                <div class="text-xs md:text-sm text-gray-200">Streams</div>
+                            </div>
+                        </div>
+
+                        <!-- CTA Button -->
+                        <div class="flex flex-col sm:flex-row gap-3 md:gap-4 mobile-stack">
+                            <a href="#contact" class="btn-primary flex-1 text-center py-3 mobile-full">
+                                <i class="fas fa-handshake mr-2"></i>
+                                Work Together
+                            </a>
+                            <a href="#music"
+                                class="glass px-4 md:px-6 py-3 rounded-full border border-secondary hover:bg-secondary/20 transition-all text-center mobile-full">
+                                <i class="fas fa-music mr-2"></i>
+                                Hear My Music
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Music Philosophy Section -->
+                <div class="glass p-8 rounded-3xl" data-aos="fade-up">
+                    <div class="text-center mb-8">
+                        <h3 class="text-3xl font-bold mb-4 gradient-text">Music Philosophy</h3>
+                        <p class="text-xl text-gray-300 max-w-4xl mx-auto">
+                            "Music is the universal language that connects souls. Every beat, every drop, every melody
+                            is crafted to create moments that people will remember forever. My mission is to take you on
+                            a journey where sound becomes emotion and rhythm becomes life."
+                        </p>
+                        <div class="mt-6 text-right">
+                            <span class="text-lg font-semibold text-primary">— DJ JAI</span>
+                        </div>
+                    </div>
+
+                    <!-- Genre Expertise -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+                        <div class="text-center group">
+                            <div
+                                class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <i class="fas fa-bolt text-2xl text-cyan-400"
+                                    style="color: #00BFFF; text-shadow: 0 0 10px rgba(0, 191, 255, 0.5);"></i>
+                            </div>
+                            <h4 class="font-semibold mb-2">Electronic</h4>
+                            <p class="text-sm text-gray-400">EDM, Progressive House</p>
+                        </div>
+                        <div class="text-center group">
+                            <div
+                                class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-secondary to-accent rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <i class="fas fa-fire text-2xl text-orange-400"
+                                    style="color: #FF6B35; text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);"></i>
+                            </div>
+                            <h4 class="font-semibold mb-2">Bass</h4>
+                            <p class="text-sm text-gray-400">Dubstep, Future Bass</p>
+                        </div>
+                        <div class="text-center group">
+                            <div
+                                class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-accent to-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <i class="fas fa-heart text-2xl text-pink-400"
+                                    style="color: #FF1493; text-shadow: 0 0 10px rgba(255, 20, 147, 0.5);"></i>
+                            </div>
+                            <h4 class="font-semibold mb-2">Tech House</h4>
+                            <p class="text-sm text-gray-400">Deep, Minimal Tech</p>
+                        </div>
+                        <div class="text-center group">
+                            <div
+                                class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <i class="fas fa-star text-2xl text-yellow-400"
+                                    style="color: #FFD700; text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);"></i>
+                            </div>
+                            <h4 class="font-semibold mb-2">Trance</h4>
+                            <p class="text-sm text-gray-400">Uplifting, Psytrance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Music Section -->
+        <section id="music" class="py-20 lg:py-32 bg-dark-light">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-5xl font-display font-bold mb-6">Latest Tracks</h2>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                        Experience the evolution of sound with my latest productions and exclusive mixes
+                    </p>
+                </div>
+
+                <!-- Music Player -->
+                <div class="max-w-4xl mx-auto mb-16" data-aos="zoom-in">
+                    <div class="music-player glass rounded-3xl">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center space-x-4">
+                                <div
+                                    class="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-music text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold">Neon Dreams</h3>
+                                    <p class="text-gray-400">DJ JAI ft. Future Bass</p>
+                                </div>
+                            </div>
+                            <button
+                                class="w-12 h-12 bg-white rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-lg">
+                                <i class="fas fa-play text-black ml-1"></i>
+                            </button>
+                        </div>
+                        <div class="progress-bar mb-4">
+                            <div class="progress-fill" style="width: 35%"></div>
+                        </div>
+                        <div class="flex justify-between text-sm text-gray-400">
+                            <span>1:23</span>
+                            <span>3:45</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spotify Integration -->
+                <div class="max-w-4xl mx-auto" data-aos="fade-up">
+                    <iframe style="border-radius:24px"
+                        src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M" width="100%" height="400"
+                        frameBorder="0" allowfullscreen=""
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 lg:py-32">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-5xl font-display font-bold mb-6">DJ Packages</h2>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                        Professional DJ services with premium equipment for events of all sizes
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Standard Package -->
+                    <div class="glass rounded-3xl p-8 hover-3d text-center flex flex-col" data-aos="flip-up"
+                        data-aos-delay="100">
+                        <div
+                            class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-purple-600 to-blue-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-music text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Standard DJ Package</h3>
+                        <p class="text-gray-200 mb-4">Perfect for small events up to 100 people</p>
+                        <ul class="text-left text-sm text-gray-200 mb-6 space-y-2 flex-grow">
+                            <li>• 5 Hour DJ Set</li>
+                            <li>• Standard DJ Booth</li>
+                            <li>• 2 x 1,000-Watt Column Array Speakers</li>
+                            <li>• 1 x Wireless Microphone</li>
+                            <li>• 2 x LED Lights</li>
+                            <li>• Audio Technician (Set up/Pack down)</li>
+                        </ul>
+                        <div class="text-center mt-auto">
+                            <div class="text-3xl font-bold text-primary mb-4">$1,200</div>
+                            <button class="btn-primary w-full book-now-btn" data-package="Standard">Book Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Premium Package -->
+                    <div class="glass rounded-3xl p-8 hover-3d text-center relative border-2 border-primary flex flex-col"
+                        data-aos="flip-up" data-aos-delay="200">
+                        <div
+                            class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-primary text-black px-4 py-1 rounded-full text-xs font-bold">
+                            MOST POPULAR
+                        </div>
+                        <div
+                            class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-pink-500 to-rose-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-star text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Premium DJ Package</h3>
+                        <p class="text-gray-200 mb-4">Ideal for medium events up to 200 people</p>
+                        <ul class="text-left text-sm text-gray-200 mb-6 space-y-1 flex-grow">
+                            <li>• 6 Hour DJ Set</li>
+                            <li>• Premium DJ Booth</li>
+                            <li>• 2 x 2,000-Watt Column Array Speakers</li>
+                            <li>• 2 x 10" Delay Speakers</li>
+                            <li>• 2 x Wireless Microphones</li>
+                            <li>• 2 x 250W Intelligent Moving Lights</li>
+                            <li>• 2 x Aluminium Trussing with LED Light</li>
+                            <li>• Smart Lighting Control</li>
+                            <li>• Haze Machine (subject to venue approval)</li>
+                            <li>• Music on Demand (Spotify/YouTube)</li>
+                            <li>• Audio Technician (Set up/Pack down)</li>
+                        </ul>
+                        <div class="text-center mt-auto">
+                            <div class="text-3xl font-bold text-primary mb-4">$2,000</div>
+                            <button class="btn-primary w-full book-now-btn" data-package="Premium">Book Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Ultra-Premium Package -->
+                    <div class="glass rounded-3xl p-8 hover-3d text-center flex flex-col" data-aos="flip-up"
+                        data-aos-delay="300">
+                        <div
+                            class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-cyan-400 to-pink-400 rounded-full flex items-center justify-center">
+                            <i class="fas fa-crown text-2xl text-purple-600"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Ultra-Premium DJ Package</h3>
+                        <p class="text-gray-200 mb-4">Perfect for medium to large events up to 400 people</p>
+                        <ul class="text-left text-sm text-gray-200 mb-6 space-y-1 flex-grow">
+                            <li>• Extended DJ Set</li>
+                            <li>• Site Inspection</li>
+                            <li>• Premium DJ Booth</li>
+                            <li>• 2 x 3,000-Watt Column Array Speakers</li>
+                            <li>• 4 x 10" Delay Speakers</li>
+                            <li>• 2 x Wireless Microphones</li>
+                            <li>• 4 x 350W Intelligent Moving Lights</li>
+                            <li>• 4 x Aluminium Trussing with LED Light</li>
+                            <li>• Smart Lighting Control</li>
+                            <li>• Haze Machine (subject to venue approval)</li>
+                            <li>• Music on Demand (Spotify/YouTube)</li>
+                            <li>• Audio Technician (Set up/Pack down)</li>
+                        </ul>
+                        <div class="text-center mt-auto">
+                            <div class="text-3xl font-bold text-primary mb-4">$3,200</div>
+                            <button class="btn-primary w-full book-now-btn" data-package="Ultra-Premium">Book
+                                Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call-to-Action for Full Services -->
+                <div class="text-center mt-16" data-aos="fade-up">
+                    <div class="glass rounded-3xl p-8 max-w-4xl mx-auto">
+                        <h3 class="text-3xl font-bold mb-4">Need More Options?</h3>
+                        <p class="text-xl text-gray-300 mb-6">
+                            Explore our complete range of add-ons and customization options
+                        </p>
+                        <a href="services.html" class="btn-primary text-lg px-8 py-4">
+                            <i class="fas fa-plus mr-2"></i>
+                            View All Services & Add-ons
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="py-20 lg:py-32 bg-dark-light relative overflow-hidden">
+            <!-- Dynamic Background Effects -->
+            <div class="absolute inset-0 opacity-20">
+                <div class="absolute top-20 left-10 w-32 h-32 bg-primary rounded-full blur-3xl animate-pulse"></div>
+                <div class="absolute bottom-20 right-10 w-40 h-40 bg-secondary rounded-full blur-3xl animate-pulse"
+                    style="animation-delay: 1s;"></div>
+                <div class="absolute top-1/2 left-1/3 w-24 h-24 bg-accent rounded-full blur-2xl animate-pulse"
+                    style="animation-delay: 2s;"></div>
+            </div>
+
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-5xl font-display font-bold mb-6 gradient-text">Live Moments</h2>
+                    <p class="text-xl text-gray-300">Pure energy captured in motion</p>
+                </div>
+
+                <!-- Modern Mosaic Gallery Grid -->
+                <div class="gallery-grid" data-aos="fade-up" data-aos-delay="200">
+                    <!-- Large Featured Image -->
+                    <div class="gallery-item gallery-large group">
+                        <div class="gallery-image-container gallery-clickable"
+                            data-image="./Asstes/marcela-laskoski-YrtFlrLo2DQ-unsplash.jpg"
+                            data-title="Main Stage Performance"
+                            data-description="DJ JAI electrifying the crowd at SoundWave Festival">
+                            <img src="./Asstes/marcela-laskoski-YrtFlrLo2DQ-unsplash.jpg" alt="Gallery Image"
+                                class="gallery-image">
+                            <div class="gallery-overlay">
+                                <div class="gallery-zoom-icon">
+                                    <i class="fas fa-expand text-2xl"></i>
+                                </div>
+                                <div class="gallery-pulse-ring"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Medium Images -->
+                    <div class="gallery-item gallery-medium group">
+                        <div class="gallery-image-container gallery-clickable"
+                            data-image="./Asstes/danny-howe-Hq9BwndSFAY-unsplash.jpg" data-title="Club Night"
+                            data-description="Intimate club setting with perfect lighting and atmosphere">
+                            <img src="./Asstes/danny-howe-Hq9BwndSFAY-unsplash.jpg" alt="Gallery Image"
+                                class="gallery-image">
+                            <div class="gallery-overlay">
+                                <div class="gallery-zoom-icon">
+                                    <i class="fas fa-expand text-xl"></i>
+                                </div>
+                                <div class="gallery-pulse-ring"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item gallery-medium group">
+                        <div class="gallery-image-container gallery-clickable" data-image="./Asstes/DJ_DEMO.jpg"
+                            data-title="Studio Session"
+                            data-description="Behind the scenes in the studio creating new tracks">
+                            <img src="./Asstes/DJ_DEMO.jpg" alt="Gallery Image" class="gallery-image">
+                            <div class="gallery-overlay">
+                                <div class="gallery-zoom-icon">
+                                    <i class="fas fa-expand text-xl"></i>
+                                </div>
+                                <div class="gallery-pulse-ring"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Small Images -->
+                    <div class="gallery-item gallery-small group">
+                        <div class="gallery-image-container gallery-clickable" data-image="./Asstes/dj-crowd.jpg"
+                            data-title="Crowd Energy"
+                            data-description="The energy and excitement of the crowd during a live performance">
+                            <img src="./Asstes/dj-crowd.jpg" alt="Gallery Image" class="gallery-image">
+                            <div class="gallery-overlay">
+                                <div class="gallery-zoom-icon">
+                                    <i class="fas fa-expand text-lg"></i>
+                                </div>
+                                <div class="gallery-pulse-ring"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item gallery-small group">
+                        <div class="gallery-image-container gallery-clickable"
+                            data-image="./Asstes/a-j-r3XvSBEQQLo-unsplash.jpg" data-title="Festival Vibes"
+                            data-description="Epic festival moment captured under the lights">
+                            <img src="./Asstes/a-j-r3XvSBEQQLo-unsplash.jpg" alt="Gallery Image" class="gallery-image">
+                            <div class="gallery-overlay">
+                                <div class="gallery-zoom-icon">
+                                    <i class="fas fa-expand text-lg"></i>
+                                </div>
+                                <div class="gallery-pulse-ring"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wide Image -->
+                    <div class="gallery-item gallery-wide group">
+                        <div class="gallery-image-container gallery-clickable"
+                            data-image="./Asstes/photo-1496337589254-7e19d01cec44.avif"
+                            data-title="Panoramic Performance"
+                            data-description="Wide shot capturing the full scale of the performance venue">
+                            <img src="./Asstes/photo-1496337589254-7e19d01cec44.avif" alt="Gallery Image"
+                                class="gallery-image">
+                            <div class="gallery-overlay">
+                                <div class="gallery-zoom-icon">
+                                    <i class="fas fa-expand text-xl"></i>
+                                </div>
+                                <div class="gallery-pulse-ring"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Small Images -->
+                    <div class="gallery-item gallery-small group">
+                        <div class="gallery-image-container gallery-clickable"
+                            data-image="./Asstes/photo-1511222138462-5d03818b409c.avif" data-title="Equipment Setup"
+                            data-description="Professional DJ equipment and setup for the perfect sound">
+                            <img src="./Asstes/photo-1511222138462-5d03818b409c.avif" alt="Gallery Image"
+                                class="gallery-image">
+                            <div class="gallery-overlay">
+                                <div class="gallery-zoom-icon">
+                                    <i class="fas fa-expand text-lg"></i>
+                                </div>
+                                <div class="gallery-pulse-ring"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item gallery-small group">
+                        <div class="gallery-image-container gallery-clickable"
+                            data-image="./Asstes/photo-1533174072545-7a4b6ad7a6c3.avif" data-title="Live Mix"
+                            data-description="In the moment, creating the perfect mix for the audience">
+                            <img src="./Asstes/photo-1533174072545-7a4b6ad7a6c3.avif" alt="Gallery Image"
+                                class="gallery-image">
+                            <div class="gallery-overlay">
+                                <div class="gallery-zoom-icon">
+                                    <i class="fas fa-expand text-lg"></i>
+                                </div>
+                                <div class="gallery-pulse-ring"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating Action Button -->
+                <div class="text-center mt-16" data-aos="fade-up">
+                    <a href="gallery.html" class="floating-gallery-btn group">
+                        <div class="btn-content">
+                            <i class="fas fa-images mr-2"></i>
+                            <span>Explore More</span>
+                        </div>
+                        <div class="btn-bg"></div>
+                        <div class="btn-glow-effect"></div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section id="events" class="py-20 lg:py-32">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-5xl font-display font-bold mb-6">Upcoming Events</h2>
+                    <p class="text-xl text-gray-300">Join me at these electrifying venues</p>
+                </div>
+
+                <div class="grid gap-8 max-w-5xl mx-auto">
+                    <!-- Event Card 1 -->
+                    <div class="glass rounded-3xl p-8 hover-3d" data-aos="fade-up" data-aos-delay="100">
+                        <div class="flex flex-col md:flex-row items-center gap-8">
+                            <div class="gradient-border rounded-2xl p-6 text-center min-w-[160px]">
+                                <div class="text-3xl font-bold text-primary">AUG</div>
+                                <div class="text-4xl font-black">15</div>
+                                <div class="text-sm text-gray-400">2025</div>
+                            </div>
+                            <div class="flex-1 text-center md:text-left">
+                                <h3 class="text-2xl font-bold mb-2">SoundWave Festival</h3>
+                                <p class="text-white-400 mb-2">Main Stage Performance</p>
+                                <p class="text-primary font-semibold">New York, USA</p>
+                            </div>
+                            <div class="flex flex-col gap-3">
+                                <button class="btn-primary px-6 py-2 text-sm more-info-btn" data-event="soundwave">View
+                                    Details</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event Card 2 -->
+                    <div class="glass rounded-3xl p-8 hover-3d" data-aos="fade-up" data-aos-delay="200">
+                        <div class="flex flex-col md:flex-row items-center gap-8">
+                            <div class="gradient-border rounded-2xl p-6 text-center min-w-[160px]">
+                                <div class="text-3xl font-bold text-primary">SEP</div>
+                                <div class="text-4xl font-black">02</div>
+                                <div class="text-sm text-gray-400">2025</div>
+                            </div>
+                            <div class="flex-1 text-center md:text-left">
+                                <h3 class="text-2xl font-bold mb-2">Club Elysium</h3>
+                                <p class="text-gray-400 mb-2">Exclusive Set</p>
+                                <p class="text-secondary font-semibold">Berlin, Germany</p>
+                            </div>
+                            <div class="flex flex-col gap-3">
+                                <button class="btn-primary px-6 py-2 text-sm more-info-btn" data-event="elysium">View
+                                    Details</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event Card 3 -->
+                    <div class="glass rounded-3xl p-8 hover-3d" data-aos="fade-up" data-aos-delay="300">
+                        <div class="flex flex-col md:flex-row items-center gap-8">
+                            <div class="gradient-border rounded-2xl p-6 text-center min-w-[160px]">
+                                <div class="text-3xl font-bold text-accent">OCT</div>
+                                <div class="text-4xl font-black">21</div>
+                                <div class="text-sm text-gray-400">2025</div>
+                            </div>
+                            <div class="flex-1 text-center md:text-left">
+                                <h3 class="text-2xl font-bold mb-2">Electric Jungle</h3>
+                                <p class="text-gray-400 mb-2">Headliner</p>
+                                <p class="text-accent font-semibold">Tokyo, Japan</p>
+                            </div>
+                            <div class="flex flex-col gap-3">
+                                <button class="btn-primary px-6 py-2 text-sm more-info-btn" data-event="jungle">View
+                                    Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="py-20 lg:py-32 bg-dark-light">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-5xl font-display font-bold mb-6">What People Say</h2>
+                    <p class="text-xl text-gray-300">Hear from satisfied clients and fellow artists</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="glass rounded-3xl p-8 hover-3d" data-aos="fade-up" data-aos-delay="100">
+                        <div class="flex items-center mb-6">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=face"
+                                alt="Client" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <div class="font-bold">Mark Johnson</div>
+                                <div class="text-sm text-gray-400">Wedding Client</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 italic">
+                            "DJ JAI made our wedding absolutely perfect. The music selection was spot-on and kept
+                            everyone dancing all night!"
+                        </p>
+                        <div class="flex text-accent mt-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+
+                    <div class="glass rounded-3xl p-8 hover-3d" data-aos="fade-up" data-aos-delay="200">
+                        <div class="flex items-center mb-6">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b123?w=60&h=60&fit=crop&crop=face"
+                                alt="Client" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <div class="font-bold">Sarah Chen</div>
+                                <div class="text-sm text-gray-400">Event Manager</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 italic">
+                            "Professional, punctual, and incredibly talented. JAI elevated our corporate event to the
+                            next level."
+                        </p>
+                        <div class="flex text-accent mt-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+
+                    <div class="glass rounded-3xl p-8 hover-3d" data-aos="fade-up" data-aos-delay="300">
+                        <div class="flex items-center mb-6">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face"
+                                alt="Client" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <div class="font-bold">Alex Rivera</div>
+                                <div class="text-sm text-gray-400">Festival Organizer</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 italic">
+                            "JAI knows how to read a crowd like no other. The energy at our festival was absolutely
+                            electric!"
+                        </p>
+                        <div class="flex text-accent mt-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 lg:py-32">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-5xl font-display font-bold neon-text mb-6">Let's Create Magic Together</h2>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                        Ready to electrify your event? Get in touch for bookings, collaborations, or just to say hello.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                    <!-- Contact Form -->
+                    <div class="glass rounded-3xl p-8" data-aos="fade-right">
+                        <h3 class="text-2xl font-bold mb-6">Send a Message</h3>
+                        <form id="contact-form" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-semibold mb-2">Name *</label>
+                                    <input type="text" id="name" name="name" required
+                                        class="w-full px-4 py-3 bg-dark border border-gray-600 rounded-xl focus:border-primary focus:outline-none transition-colors"
+                                        placeholder="Your Name">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-semibold mb-2">Email *</label>
+                                    <input type="email" id="email" name="email" required
+                                        class="w-full px-4 py-3 bg-dark border border-gray-600 rounded-xl focus:border-primary focus:outline-none transition-colors"
+                                        placeholder="your@email.com">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="phone" class="block text-sm font-semibold mb-2">Phone</label>
+                                    <input type="tel" id="phone" name="phone"
+                                        class="w-full px-4 py-3 bg-dark border border-gray-600 rounded-xl focus:border-primary focus:outline-none transition-colors"
+                                        placeholder="+1 (555) 123-4567">
+                                </div>
+                                <div>
+                                    <label for="event-date" class="block text-sm font-semibold mb-2">Event Date</label>
+                                    <input type="date" id="event-date" name="event-date"
+                                        class="w-full px-4 py-3 bg-dark border border-gray-600 rounded-xl focus:border-primary focus:outline-none transition-colors">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="dj-package" class="block text-sm font-semibold mb-2">DJ Package</label>
+                                <select id="dj-package" name="dj-package"
+                                    class="w-full px-4 py-3 bg-dark border border-gray-600 rounded-xl focus:border-primary focus:outline-none transition-colors">
+                                    <option value="">Select DJ Package</option>
+                                    <option value="Standard">Standard DJ Package - $1,200</option>
+                                    <option value="Premium">Premium DJ Package - $2,000</option>
+                                    <option value="Ultra-Premium">Ultra-Premium DJ Package - $3,200</option>
+                                    <option value="Custom">Custom Package (discuss pricing)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="event-type" class="block text-sm font-semibold mb-2">Event Type</label>
+                                <select id="event-type" name="event-type"
+                                    class="w-full px-4 py-3 bg-dark border border-gray-600 rounded-xl focus:border-primary focus:outline-none transition-colors">
+                                    <option value="">Select Event Type</option>
+                                    <option value="Wedding">Wedding</option>
+                                    <option value="Corporate Event">Corporate Event</option>
+                                    <option value="Private Party">Private Party</option>
+                                    <option value="Birthday Party">Birthday Party</option>
+                                    <option value="Anniversary">Anniversary</option>
+                                    <option value="Festival">Festival</option>
+                                    <option value="Club Event">Club Event</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="guest-count" class="block text-sm font-semibold mb-2">Expected Guest
+                                    Count</label>
+                                <select id="guest-count" name="guest-count"
+                                    class="w-full px-4 py-3 bg-dark border border-gray-600 rounded-xl focus:border-primary focus:outline-none transition-colors">
+                                    <option value="">Select Guest Count</option>
+                                    <option value="1-50">1-50 guests</option>
+                                    <option value="51-100">51-100 guests</option>
+                                    <option value="101-200">101-200 guests</option>
+                                    <option value="201-400">201-400 guests</option>
+                                    <option value="400+">400+ guests</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-semibold mb-2">Message</label>
+                                <textarea id="message" name="message" rows="4"
+                                    class="w-full px-4 py-3 bg-dark border border-gray-600 rounded-xl focus:border-primary focus:outline-none transition-colors resize-none"
+                                    placeholder="Tell me about your event, venue details, music preferences, and any special requirements..."></textarea>
+                            </div>
+
+                            <!-- Success Message -->
+                            <div id="form-success"
+                                class="hidden bg-green-600/20 border border-green-500 rounded-xl p-4 text-green-400">
+                                <i class="fas fa-check-circle mr-2"></i>
+                                Message sent successfully! I'll get back to you within 24 hours.
+                            </div>
+
+                            <!-- Error Message -->
+                            <div id="form-error"
+                                class="hidden bg-red-600/20 border border-red-500 rounded-xl p-4 text-red-400">
+                                <i class="fas fa-exclamation-triangle mr-2"></i>
+                                Please fill in all required fields.
+                            </div>
+
+                            <button type="submit" class="btn-primary w-full py-4 text-lg">
+                                <i class="fas fa-paper-plane mr-2"></i>
+                                <span id="submit-text">Send Message</span>
+                                <i id="submit-spinner" class="fas fa-spinner fa-spin ml-2 hidden"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="space-y-8" data-aos="fade-left">
+                        <div class="glass rounded-3xl p-8">
+                            <h3 class="text-2xl font-bold mb-6">Get in Touch</h3>
+                            <div class="space-y-6">
+                                <div class="flex items-center space-x-4">
+                                    <div
+                                        class="w-12 h-12 bg-gradient-to-br from-accent to-primary rounded-full flex items-center justify-center">
+                                        <i class="fas fa-envelope text-black"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold">Email</div>
+                                        <div class="text-gray-300">
+                                            <a href="mailto:booking@djjai.com"
+                                                class="hover:text-accent transition-colors">booking@djjai.com</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold">Phone</div>
+                                        <div class="text-gray-400">+1 (555) 123-4567</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold">Location</div>
+                                        <div class="text-gray-400">Los Angeles, CA</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass rounded-3xl p-8">
+                            <h3 class="text-2xl font-bold mb-6">Follow the Beat</h3>
+                            <div class="flex space-x-4">
+                                <a href="https://instagram.com/djjai"
+                                    class="social-icon w-12 h-12 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform duration-300"
+                                    style="background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);">
+                                    <i class="fab fa-instagram text-lg"></i>
+                                </a>
+                                <a href="https://open.spotify.com/artist/djjai"
+                                    class="social-icon w-12 h-12 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform duration-300"
+                                    style="background: #1DB954;">
+                                    <i class="fab fa-spotify text-lg"></i>
+                                </a>
+                                <a href="https://soundcloud.com/djjai"
+                                    class="social-icon w-12 h-12 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform duration-300"
+                                    style="background: #ff5500;">
+                                    <i class="fab fa-soundcloud text-lg"></i>
+                                </a>
+                                <a href="https://youtube.com/@djjai"
+                                    class="social-icon w-12 h-12 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform duration-300"
+                                    style="background: #FF0000;">
+                                    <i class="fab fa-youtube text-lg"></i>
+                                </a>
+                                <a href="https://tiktok.com/@djjai"
+                                    class="social-icon w-12 h-12 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform duration-300"
+                                    style="background: linear-gradient(45deg, #ff0050, #00f2ea);">
+                                    <i class="fab fa-tiktok text-lg"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="glass rounded-3xl p-8">
+                            <h3 class="text-2xl font-bold mb-4">Quick Response</h3>
+                            <p class="text-gray-400 mb-4">
+                                I typically respond to all inquiries within 24 hours. For urgent bookings, please call
+                                directly.
+                            </p>
+                            <div class="flex items-center space-x-2 text-green-400">
+                                <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                                <span class="text-sm">Available for bookings</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Event Info Modal -->
+    <div id="eventModal" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 hidden">
+        <div class="glass rounded-3xl p-8 max-w-4xl mx-4 relative max-h-[90vh] overflow-y-auto">
+            <!-- Close Button -->
+            <button id="closeEventModal"
+                class="absolute top-4 right-4 w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                <i class="fas fa-times text-white"></i>
+            </button>
+
+            <!-- Modal Content -->
+            <div id="eventModalContent">
+                <!-- Content will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Modal -->
+    <div id="galleryModal" class="fixed inset-0 bg-black bg-opacity-95 flex items-center justify-center z-50 hidden">
+        <div class="relative max-w-7xl mx-4 w-full h-full flex items-center justify-center">
+            <!-- Close Button -->
+            <button id="closeGalleryModal"
+                class="absolute top-4 right-4 w-12 h-12 bg-white bg-opacity-20 backdrop-blur-md rounded-full flex items-center justify-center hover:scale-110 transition-transform z-10">
+                <i class="fas fa-times text-white text-xl"></i>
+            </button>
+
+            <!-- Previous Button -->
+            <button id="prevImage"
+                class="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white bg-opacity-20 backdrop-blur-md rounded-full flex items-center justify-center hover:scale-110 transition-transform z-10">
+                <i class="fas fa-chevron-left text-white text-xl"></i>
+            </button>
+
+            <!-- Next Button -->
+            <button id="nextImage"
+                class="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white bg-opacity-20 backdrop-blur-md rounded-full flex items-center justify-center hover:scale-110 transition-transform z-10">
+                <i class="fas fa-chevron-right text-white text-xl"></i>
+            </button>
+
+            <!-- Modal Image Container -->
+            <div class="glass rounded-2xl p-4 max-w-5xl max-h-[90vh] overflow-hidden">
+                <img id="modalImage" src="" alt="Gallery Image"
+                    class="w-full h-full object-contain rounded-xl max-h-[80vh]">
+
+                <!-- Image Info -->
+                <div class="mt-4 text-center">
+                    <h3 id="modalImageTitle" class="text-xl font-bold text-white mb-2"></h3>
+                    <p id="modalImageDescription" class="text-gray-300"></p>
+                    <div class="mt-3 flex items-center justify-center space-x-4 text-sm text-gray-400">
+                        <span id="modalImageCounter"></span>
+                        <span>•</span>
+                        <span>Press ESC to close</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-dark border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="/DJ profile.webp" alt="DJ JAI Logo"
+                            class="w-10 h-10 object-cover rounded-full border-2 border-white/30 shadow-lg">
+                        <div class="text-3xl font-display font-bold neon-text">JAI</div>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Electrifying audiences worldwide with cutting-edge electronic music and unforgettable
+                        performances.
+                    </p>
+                    <div class="flex space-x-3">
+                        <a href="https://instagram.com/djjai"
+                            class="social-icon w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-sm">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://open.spotify.com/artist/djjai"
+                            class="social-icon w-10 h-10 bg-gradient-to-br from-secondary to-accent rounded-full flex items-center justify-center text-sm">
+                            <i class="fab fa-spotify"></i>
+                        </a>
+                        <a href="https://soundcloud.com/djjai"
+                            class="social-icon w-10 h-10 bg-gradient-to-br from-accent to-primary rounded-full flex items-center justify-center text-sm">
+                            <i class="fab fa-soundcloud"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#home" class="hover:text-primary transition-colors">Home</a></li>
+                        <li><a href="#about" class="hover:text-primary transition-colors">About</a></li>
+                        <li><a href="#music" class="hover:text-primary transition-colors">Music</a></li>
+                        <li><a href="#events" class="hover:text-primary transition-colors">Events</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#services" class="hover:text-primary transition-colors">Wedding DJ</a></li>
+                        <li><a href="#services" class="hover:text-primary transition-colors">Corporate Events</a></li>
+                        <li><a href="#services" class="hover:text-primary transition-colors">Private Parties</a></li>
+                        <li><a href="#services" class="hover:text-primary transition-colors">Music Production</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="hover:text-white transition-colors">
+                            <i class="fas fa-envelope mr-2 text-accent"></i>
+                            <a href="mailto:booking@djjai.com"
+                                class="hover:text-accent transition-colors">booking@djjai.com</a>
+                        </li>
+                        <li class="hover:text-white transition-colors">
+                            <i class="fas fa-phone mr-2 text-accent"></i>
+                            +1 (555) 123-4567
+                        </li>
+                        <li class="hover:text-white transition-colors">
+                            <i class="fas fa-map-marker-alt mr-2 text-accent"></i>
+                            Los Angeles, CA
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 DJ JAI. All rights reserved. Designed with passion and beats.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Loading screen
+        window.addEventListener('load', () => {
+            const loadingScreen = document.getElementById('loading');
+            setTimeout(() => {
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 1000);
+            }, 2000);
+        });
+
+        // Interactive Music Particle System (from demo.html)
+        function initParticleSystem() {
+            const canvas = document.getElementById('particle-canvas');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            let particlesArray = [];
+            const musicalNotes = ['♪', '♫', '♬', '♩', '♭'];
+            const mouse = { x: null, y: null, radius: 80 };
+
+            // Mouse tracking
+            window.addEventListener('mousemove', e => {
+                mouse.x = e.x;
+                mouse.y = e.y;
+            });
+
+            // Resize handling
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                initParticles();
+            });
+
+            // Particle class
+            class Particle {
+                constructor(x, y, directionX, directionY, size, color, symbol) {
+                    this.x = x;
+                    this.y = y;
+                    this.directionX = directionX;
+                    this.directionY = directionY;
+                    this.size = size;
+                    this.color = color;
+                    this.symbol = symbol;
+                    this.originalSize = size;
+                    this.isGlowing = false;
+                    this.glowTimer = 0;
+                }
+
+                draw() {
+                    ctx.font = `${this.size}px Inter`;
+                    if (this.isGlowing) {
+                        ctx.fillStyle = '#ffffff';
+                        ctx.shadowColor = '#ffffff';
+                        ctx.shadowBlur = 15;
+                    } else {
+                        ctx.fillStyle = this.color;
+                        ctx.shadowBlur = 0;
+                    }
+                    ctx.fillText(this.symbol, this.x, this.y);
+                    ctx.shadowBlur = 0;
+                }
+
+                update() {
+                    // Bounce off walls
+                    if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
+                    if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
+
+                    // Mouse interaction
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < mouse.radius && !this.isGlowing) {
+                        this.isGlowing = true;
+                        this.glowTimer = 50;
+                        this.size = this.originalSize * 2.5;
+                    }
+
+                    if (this.isGlowing) {
+                        this.glowTimer--;
+                        this.size *= 0.98;
+                        if (this.glowTimer <= 0) {
+                            this.isGlowing = false;
+                            this.size = this.originalSize;
+                        }
+                    }
+
+                    this.x += this.directionX;
+                    this.y += this.directionY;
+                    this.draw();
+                }
+            }
+
+            // Initialize particles
+            function initParticles() {
+                particlesArray = [];
+                let numberOfParticles = (canvas.height * canvas.width) / 15000;
+
+                for (let i = 0; i < numberOfParticles; i++) {
+                    let size = (Math.random() * 10) + 10;
+                    let x = (Math.random() * ((canvas.width - size * 2) - (size * 2)) + size * 2);
+                    let y = (Math.random() * ((canvas.height - size * 2) - (size * 2)) + size * 2);
+                    let directionX = (Math.random() * 0.4) - 0.2;
+                    let directionY = (Math.random() * 0.4) - 0.2;
+                    let color = 'rgba(255, 255, 255, 0.4)';
+                    let symbol = musicalNotes[Math.floor(Math.random() * musicalNotes.length)];
+
+                    particlesArray.push(new Particle(x, y, directionX, directionY, size, color, symbol));
+                }
+            }
+
+            // Animation loop
+            function animateParticles() {
+                requestAnimationFrame(animateParticles);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                for (let i = 0; i < particlesArray.length; i++) {
+                    particlesArray[i].update();
+                }
+            }
+
+            // Start the particle system
+            initParticles();
+            animateParticles();
+        }
+
+        // Initialize particle system when page loads
+        window.addEventListener('load', () => {
+            setTimeout(initParticleSystem, 1000);
+        });
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function openMobileMenu() {
+            mobileMenu.classList.remove('translate-x-full');
+            mobileMenuOverlay.classList.remove('translate-x-full');
+            document.body.style.overflow = 'hidden';
+            // Change hamburger to X
+            mobileMenuToggle.innerHTML = '<i class="fas fa-times"></i>';
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.add('translate-x-full');
+            mobileMenuOverlay.classList.add('translate-x-full');
+            document.body.style.overflow = 'auto';
+            // Change X back to hamburger
+            mobileMenuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+
+        // Toggle mobile menu when hamburger is clicked
+        mobileMenuToggle.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('translate-x-full')) {
+                openMobileMenu();
+            } else {
+                closeMobileMenu();
+            }
+        });
+
+        // Close mobile menu when close button is clicked
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+
+        // Close mobile menu when overlay is clicked
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+        // Close mobile menu when navigation link is clicked
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                closeMobileMenu();
+            });
+        });
+
+        // Close mobile menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !mobileMenu.classList.contains('translate-x-full')) {
+                closeMobileMenu();
+            }
+        });
+
+        // Close mobile menu on window resize to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768 && !mobileMenu.classList.contains('translate-x-full')) {
+                closeMobileMenu();
+            }
+        });
+
+        // Enhanced navbar scroll effect - Keep navbar always visible and sticky
+        const navbar = document.getElementById('navbar');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+
+            // Add/remove scrolled class for styling but keep navbar always visible
+            if (currentScrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+
+            // Always keep navbar visible - no hiding on scroll
+            navbar.style.transform = 'translateY(0)';
+
+            lastScrollY = currentScrollY;
+        });
+
+        // Enhanced navigation link active states
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link-enhanced');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('glass');
+            } else {
+                navbar.classList.remove('glass');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+
+                // Random colors
+                const colors = ['#ffffff', '#cccccc', '#f0f0f0'];
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Music player simulation
+        const playButtons = document.querySelectorAll('.music-player button');
+        playButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const icon = button.querySelector('i');
+                if (icon.classList.contains('fa-play')) {
+                    icon.classList.remove('fa-play');
+                    icon.classList.add('fa-pause');
+                    button.style.background = '#ffffff';
+                    button.style.color = '#000000';
+                } else {
+                    icon.classList.remove('fa-pause');
+                    icon.classList.add('fa-play');
+                    button.style.background = '#cccccc';
+                    button.style.color = '#000000';
+                }
+            });
+        });
+
+        // 3D tilt effect for cards
+        function addTiltEffect() {
+            const cards = document.querySelectorAll('.hover-3d');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / 10;
+                    const rotateY = (centerX - x) / 10;
+
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+                });
+            });
+        }
+
+        // Gradient text effect
+        const style = document.createElement('style');
+        style.textContent = `
+            .gradient-text {
+                background: linear-gradient(45deg, #ffffff, #cccccc, #f0f0f0);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Event Modal Functionality
+        const eventModal = document.getElementById('eventModal');
+        const eventModalContent = document.getElementById('eventModalContent');
+        const closeEventModal = document.getElementById('closeEventModal');
+        const moreInfoBtns = document.querySelectorAll('.more-info-btn');
+
+        // Event data
+        const eventData = {
+            soundwave: {
+                title: "SoundWave Festival",
+                date: "August 15, 2025",
+                location: "New York, USA",
+                venue: "Central Park SummerStage",
+                image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&h=400&fit=crop",
+                programType: "Festival Headliner",
+                duration: "90 Minutes Set",
+                genre: "Progressive House & EDM",
+                capacity: "15,000 People",
+                description: "Join DJ JAI for an electrifying performance at one of New York's most iconic outdoor venues. This exclusive festival set will feature the latest tracks from his upcoming album along with crowd favorites that have defined his career.",
+                highlights: [
+                    "Debut of 3 unreleased tracks",
+                    "Special guest appearances",
+                    "State-of-the-art sound system",
+                    "Professional lighting show",
+                    "VIP meet & greet packages available"
+                ],
+                timeSlot: "8:00 PM - 9:30 PM",
+                supportingActs: ["DJ Luna", "Bass Collective", "Neon Nights"]
+            },
+            elysium: {
+                title: "Club Elysium",
+                date: "September 2, 2025",
+                location: "Berlin, Germany",
+                venue: "Club Elysium Underground",
+                image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&h=400&fit=crop",
+                programType: "Exclusive Club Set",
+                duration: "4 Hours Extended Set",
+                genre: "Techno & Deep House",
+                capacity: "800 People",
+                description: "An intimate underground experience in Berlin's legendary club scene. DJ JAI brings his signature sound to the intimate confines of Club Elysium for a night of pure electronic bliss.",
+                highlights: [
+                    "4-hour extended journey",
+                    "Intimate club atmosphere",
+                    "Premium sound system by Funktion-One",
+                    "Limited capacity for exclusive experience",
+                    "Special Berlin techno tribute set"
+                ],
+                timeSlot: "11:00 PM - 3:00 AM",
+                supportingActs: ["Berlin Collective", "Underground Sessions"]
+            },
+            jungle: {
+                title: "Electric Jungle",
+                date: "October 21, 2025",
+                location: "Tokyo, Japan",
+                venue: "Tokyo Dome City Hall",
+                image: "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800&h=400&fit=crop",
+                programType: "Festival Headliner",
+                duration: "120 Minutes Set",
+                genre: "Future Bass & Experimental",
+                capacity: "12,000 People",
+                description: "Experience the future of electronic music in the heart of Tokyo. This special performance will showcase DJ JAI's innovative approach to sound design and his love for Japanese electronic culture.",
+                highlights: [
+                    "Tokyo exclusive performance",
+                    "Fusion of Eastern and Western sounds",
+                    "Holographic stage production",
+                    "Collaboration with local Japanese artists",
+                    "Limited edition merchandise"
+                ],
+                timeSlot: "9:00 PM - 11:00 PM",
+                supportingActs: ["Tokyo Drift", "Neon Samurai", "Digital Dreams"]
+            }
+        };
+
+        // Add event listeners to More Info buttons
+        moreInfoBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const eventKey = e.target.getAttribute('data-event');
+                showEventModal(eventData[eventKey]);
+            });
+        });
+
+        // Show event modal with dynamic content
+        function showEventModal(event) {
+            eventModalContent.innerHTML = `
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Event Image -->
+                    <div class="relative">
+                        <img src="${event.image}" alt="${event.title}" class="event-modal-image">
+                        <div class="absolute top-4 left-4 glass px-4 py-2 rounded-full">
+                            <span class="text-sm font-semibold text-primary">${event.programType}</span>
+                        </div>
+                    </div>
+
+                    <!-- Event Details -->
+                    <div class="space-y-6">
+                        <div>
+                            <h2 class="text-4xl font-display font-bold mb-4 event-highlight">${event.title}</h2>
+                            <p class="text-xl text-gray-300 mb-6">${event.description}</p>
+                        </div>
+
+                        <!-- Quick Info Cards -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="event-detail-card text-center">
+                                <i class="fas fa-calendar-alt text-primary mb-2 text-2xl"></i>
+                                <div class="font-semibold">${event.date}</div>
+                                <div class="text-sm text-gray-400">${event.timeSlot}</div>
+                            </div>
+                            <div class="event-detail-card text-center">
+                                <i class="fas fa-map-marker-alt text-secondary mb-2 text-2xl"></i>
+                                <div class="font-semibold">${event.location}</div>
+                                <div class="text-sm text-gray-400">${event.venue}</div>
+                            </div>
+                            <div class="event-detail-card text-center">
+                                <i class="fas fa-music text-accent mb-2 text-2xl"></i>
+                                <div class="font-semibold">${event.genre}</div>
+                                <div class="text-sm text-gray-400">${event.duration}</div>
+                            </div>
+                            <div class="event-detail-card text-center">
+                                <i class="fas fa-users text-primary mb-2 text-2xl"></i>
+                                <div class="font-semibold">${event.capacity}</div>
+                                <div class="text-sm text-gray-400">Max Capacity</div>
+                            </div>
+                        </div>
+
+                        <!-- Event Highlights -->
+                        <div class="event-detail-card">
+                            <h4 class="text-xl font-bold mb-4 text-accent">Event Highlights</h4>
+                            <ul class="space-y-2">
+                                ${event.highlights.map(highlight => `
+                                    <li class="flex items-center">
+                                        <i class="fas fa-star text-primary mr-3"></i>
+                                        <span class="text-gray-300">${highlight}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+
+                        <!-- Supporting Acts -->
+                        <div class="event-detail-card">
+                            <h4 class="text-xl font-bold mb-4 text-secondary">Supporting Acts</h4>
+                            <div class="flex flex-wrap gap-2">
+                                ${event.supportingActs.map(act => `
+                                    <span class="glass px-3 py-1 rounded-full text-sm border border-secondary">${act}</span>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex justify-center mt-8">
+                            <button class="glass px-8 py-3 rounded-full border border-accent hover:bg-accent/20 transition-all">
+                                <i class="fas fa-share-alt mr-2"></i>
+                                Share Event Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            eventModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close event modal
+        closeEventModal.addEventListener('click', closeEventModalFunc);
+        eventModal.addEventListener('click', (e) => {
+            if (e.target === eventModal) {
+                closeEventModalFunc();
+            }
+        });
+
+        function closeEventModalFunc() {
+            eventModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Keyboard support for modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !eventModal.classList.contains('hidden')) {
+                closeEventModalFunc();
+            }
+        });
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            addTiltEffect();
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Form handling
+        const contactForm = document.querySelector('#contact form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                // Simulate form submission
+                const submitBtn = contactForm.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+                submitBtn.disabled = true;
+
+                setTimeout(() => {
+                    submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i>Message Sent!';
+                    submitBtn.style.background = 'linear-gradient(45deg, #10B981, #059669)';
+
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.style.background = '';
+                        contactForm.reset();
+                    }, 3000);
+                }, 2000);
+            });
+        }
+
+        // Add scroll progress indicator
+        const progressBar = document.createElement('div');
+        progressBar.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(45deg, #ffffff, #cccccc);
+            z-index: 9999;
+            transition: width 0.3s ease;
+        `;
+        document.body.appendChild(progressBar);
+
+        window.addEventListener('scroll', () => {
+            const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            progressBar.style.width = scrolled + '%';
+        });
+
+        // Gallery Modal functionality
+        const galleryModal = document.getElementById('galleryModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalImageTitle = document.getElementById('modalImageTitle');
+        const modalImageDescription = document.getElementById('modalImageDescription');
+        const modalImageCounter = document.getElementById('modalImageCounter');
+        const closeGalleryModal = document.getElementById('closeGalleryModal');
+        const prevImageBtn = document.getElementById('prevImage');
+        const nextImageBtn = document.getElementById('nextImage');
+
+        let currentImageIndex = 0;
+        let galleryImages = [];
+
+        // Initialize gallery images
+        function initGallery() {
+            const galleryContainers = document.querySelectorAll('.gallery-clickable');
+            galleryImages = Array.from(galleryContainers).map(container => ({
+                src: container.getAttribute('data-image'),
+                title: container.getAttribute('data-title'),
+                description: container.getAttribute('data-description')
+            }));
+
+            // Add click event listeners
+            galleryContainers.forEach((container, index) => {
+                container.addEventListener('click', () => {
+                    openGalleryModal(index);
+                });
+                container.style.cursor = 'pointer';
+            });
+        }
+
+        // Open gallery modal
+        function openGalleryModal(imageIndex) {
+            currentImageIndex = imageIndex;
+            updateModalImage();
+            galleryModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close gallery modal
+        function closeGalleryModalFunc() {
+            galleryModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Update modal image
+        function updateModalImage() {
+            const image = galleryImages[currentImageIndex];
+            modalImage.src = image.src;
+            modalImageTitle.textContent = image.title;
+            modalImageDescription.textContent = image.description;
+            modalImageCounter.textContent = `${currentImageIndex + 1} of ${galleryImages.length}`;
+
+            // Preload next and previous images for smooth navigation
+            if (currentImageIndex > 0) {
+                const prevImg = new Image();
+                prevImg.src = galleryImages[currentImageIndex - 1].src;
+            }
+            if (currentImageIndex < galleryImages.length - 1) {
+                const nextImg = new Image();
+                nextImg.src = galleryImages[currentImageIndex + 1].src;
+            }
+        }
+
+        // Previous image
+        function showPreviousImage() {
+            if (currentImageIndex > 0) {
+                currentImageIndex--;
+                updateModalImage();
+            }
+        }
+
+        // Next image
+        function showNextImage() {
+            if (currentImageIndex < galleryImages.length - 1) {
+                currentImageIndex++;
+                updateModalImage();
+            }
+        }
+
+        // Event listeners for gallery modal
+        closeGalleryModal.addEventListener('click', closeGalleryModalFunc);
+        prevImageBtn.addEventListener('click', showPreviousImage);
+        nextImageBtn.addEventListener('click', showNextImage);
+
+        // Close modal when clicking outside the image
+        galleryModal.addEventListener('click', (e) => {
+            if (e.target === galleryModal) {
+                closeGalleryModalFunc();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (galleryModal.classList.contains('hidden')) return;
+
+            switch (e.key) {
+                case 'Escape':
+                    closeGalleryModalFunc();
+                    break;
+                case 'ArrowLeft':
+                    showPreviousImage();
+                    break;
+                case 'ArrowRight':
+                    showNextImage();
+                    break;
+            }
+        });
+
+        // Initialize gallery when page loads
+        document.addEventListener('DOMContentLoaded', initGallery);
+
+        // Book Now Button Functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const bookNowButtons = document.querySelectorAll('.book-now-btn');
+
+            bookNowButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    const packageType = button.getAttribute('data-package');
+                    const contactSection = document.getElementById('contact');
+
+                    // Smooth scroll to contact section
+                    contactSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+
+                    // Pre-fill the DJ package dropdown if it exists
+                    setTimeout(() => {
+                        const djPackageSelect = document.querySelector('#dj-package');
+                        if (djPackageSelect && packageType) {
+                            djPackageSelect.value = packageType;
+
+                            // Highlight the selected package
+                            djPackageSelect.style.borderColor = '#00ff88';
+                            djPackageSelect.style.boxShadow = '0 0 10px rgba(0, 255, 136, 0.3)';
+
+                            setTimeout(() => {
+                                djPackageSelect.style.borderColor = '';
+                                djPackageSelect.style.boxShadow = '';
+                            }, 2000);
+                        }
+
+                        // Add a subtle highlight effect to the form
+                        const contactForm = document.querySelector('#contact-form');
+                        if (contactForm) {
+                            contactForm.style.boxShadow = '0 0 20px rgba(255, 255, 255, 0.1)';
+                            contactForm.style.transform = 'scale(1.02)';
+                            contactForm.style.transition = 'all 0.3s ease';
+
+                            setTimeout(() => {
+                                contactForm.style.boxShadow = '';
+                                contactForm.style.transform = '';
+                            }, 2000);
+                        }
+
+                        // Show a temporary message
+                        showBookingMessage(packageType);
+                    }, 500);
+                });
+            });
+        });
+
+        // Contact Form Submission Handler
+        document.addEventListener('DOMContentLoaded', () => {
+            const contactForm = document.getElementById('contact-form');
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const submitText = document.getElementById('submit-text');
+            const submitSpinner = document.getElementById('submit-spinner');
+            const successMessage = document.getElementById('form-success');
+            const errorMessage = document.getElementById('form-error');
+
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                // Hide previous messages
+                successMessage.classList.add('hidden');
+                errorMessage.classList.add('hidden');
+
+                // Get form data
+                const formData = new FormData(contactForm);
+                const data = Object.fromEntries(formData);
+
+                // Basic validation
+                if (!data.name || !data.email) {
+                    errorMessage.classList.remove('hidden');
+                    errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    return;
+                }
+
+                // Email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(data.email)) {
+                    errorMessage.querySelector('span') ?
+                        errorMessage.querySelector('span').textContent = 'Please enter a valid email address.' :
+                        errorMessage.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Please enter a valid email address.';
+                    errorMessage.classList.remove('hidden');
+                    errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    return;
+                }
+
+                // Show loading state
+                submitButton.disabled = true;
+                submitText.textContent = 'Sending...';
+                submitSpinner.classList.remove('hidden');
+
+                try {
+                    // Simulate form submission (replace with actual form handling)
+                    await new Promise(resolve => setTimeout(resolve, 2000));
+
+                    // Show success message
+                    successMessage.classList.remove('hidden');
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+                    // Reset form
+                    contactForm.reset();
+
+                    // Log form data (in real implementation, send to server)
+                    console.log('Form submitted:', data);
+
+                } catch (error) {
+                    // Show error message
+                    errorMessage.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Something went wrong. Please try again.';
+                    errorMessage.classList.remove('hidden');
+                    errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+                } finally {
+                    // Reset button state
+                    submitButton.disabled = false;
+                    submitText.textContent = 'Send Message';
+                    submitSpinner.classList.add('hidden');
+                }
+            });
+
+            // Real-time validation
+            const requiredFields = ['name', 'email'];
+            requiredFields.forEach(fieldName => {
+                const field = document.getElementById(fieldName);
+                if (field) {
+                    field.addEventListener('blur', () => {
+                        if (!field.value.trim()) {
+                            field.style.borderColor = '#ef4444';
+                        } else {
+                            field.style.borderColor = '';
+                        }
+                    });
+
+                    field.addEventListener('input', () => {
+                        if (field.value.trim()) {
+                            field.style.borderColor = '#00ff88';
+                            setTimeout(() => {
+                                field.style.borderColor = '';
+                            }, 1000);
+                        }
+                    });
+                }
+            });
+        });
+
+        // Show booking message function
+        function showBookingMessage(packageType) {
+            // Create a temporary message
+            const message = document.createElement('div');
+            message.className = 'fixed top-20 right-4 glass p-4 rounded-xl z-50 transform translate-x-full transition-transform duration-300';
+            message.style.background = 'rgba(255, 255, 255, 0.1)';
+            message.style.backdropFilter = 'blur(10px)';
+            message.style.border = '1px solid rgba(255, 255, 255, 0.2)';
+            message.innerHTML = `
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-check-circle text-green-400 text-xl"></i>
+                    <div>
+                        <div class="font-semibold text-white">${packageType} Package Selected</div>
+                        <div class="text-sm text-gray-300">Please fill out the form below</div>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(message);
+
+            // Animate in
+            setTimeout(() => {
+                message.style.transform = 'translateX(0)';
+            }, 100);
+
+            // Animate out and remove
+            setTimeout(() => {
+                message.style.transform = 'translateX(full)';
+                setTimeout(() => {
+                    document.body.removeChild(message);
+                }, 300);
+            }, 3000);
+        }
+
+    </script>
+</body>
+
+</html>

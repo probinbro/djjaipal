@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DJ VEX – Official Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0d0d0d;
+            color: #f0f0f0;
+            overflow-x: hidden;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0d0d0d; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(45deg, #f87171, #6366f1); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: linear-gradient(45deg, #ef4444, #4f46e5); }
+
+        /* Neon Glow Title Animation */
+        .hero-title {
+            text-shadow: 0 0 20px rgba(248, 113, 113, 0.7), 0 0 40px rgba(99, 102, 241, 0.7);
+            animation: neonGlow 2s ease-in-out infinite alternate;
+        }
+        @keyframes neonGlow {
+            from { text-shadow: 0 0 15px rgba(248, 113, 113, 0.6), 0 0 30px rgba(99, 102, 241, 0.6); }
+            to { text-shadow: 0 0 30px rgba(248, 113, 113, 0.8), 0 0 60px rgba(99, 102, 241, 0.8); }
+        }
+        
+        /* Glassmorphism effect */
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Gallery Image Hover Effect */
+        .gallery-item .image-container { transition: transform 0.4s ease; }
+        .gallery-item:hover .image-container { transform: scale(1.05); }
+        .gallery-item .overlay { opacity: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); transition: opacity 0.4s ease; }
+        .gallery-item:hover .overlay { opacity: 1; }
+
+        /* Glow Button Effect */
+        .glow-button {
+            box-shadow: 0 0 15px #f87171;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .glow-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px #f87171, 0 0 5px #fff;
+        }
+
+        /* Parallax section */
+        .parallax-section {
+             background-image: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1920&auto=format&fit=crop');
+             background-attachment: fixed;
+             background-position: center;
+             background-repeat: no-repeat;
+             background-size: cover;
+        }
+
+        /* Animated Gradient BG for Hero */
+        #hero-gradient-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(270deg, #0d0d0d, #ef4444, #4f46e5, #0d0d0d);
+            background-size: 800% 800%;
+            animation: gradient-animation 20s ease infinite;
+            z-index: 1;
+        }
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Positioning for Hero elements */
+        #hero-video { position: absolute; z-index: 2; mix-blend-mode: screen; opacity: 0.6; }
+        #particle-canvas { position: absolute; z-index: 3; }
+        .hero-content { position: relative; z-index: 4; }
+
+        /* 3D Tilt Effect for tour card */
+        .tour-card {
+            transform-style: preserve-3d;
+            transition: transform 0.4s ease;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="fixed w-full p-4 z-50 transition-all duration-300" id="header">
+        <nav class="container mx-auto flex justify-between items-center">
+            <div class="text-3xl font-black tracking-wider">VEX</div>
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="#about" class="hover:text-red-400 transition-colors">About</a>
+                <a href="#music" class="hover:text-red-400 transition-colors">Music</a>
+                <a href="#tour" class="hover:text-red-400 transition-colors">Tour</a>
+                <a href="#contact" class="bg-red-500 text-white font-bold py-2 px-5 rounded-full hover:bg-red-600 transition-all duration-300 glow-button">Book Now</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-btn" class="text-white focus:outline-none"><i class="fas fa-bars text-2xl"></i></button>
+            </div>
+        </nav>
+    </header>
+    
+    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-95 z-40 hidden flex-col items-center justify-center space-y-8">
+        <a href="#about" class="text-2xl hover:text-red-400">About</a>
+        <a href="#music" class="text-2xl hover:text-red-400">Music</a>
+        <a href="#tour" class="text-2xl hover:text-red-400">Tour</a>
+        <a href="#contact" class="text-2xl bg-red-500 text-white font-bold py-3 px-6 rounded-full glow-button">Book Now</a>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero-section" class="relative h-screen w-screen overflow-hidden">
+            <div id="hero-gradient-bg"></div>
+            <video id="hero-video" autoplay muted loop playsinline class="inset-0 w-full h-full object-cover">
+                <source src="https://cdn.coverr.co/videos/coverr-night-dj-party-1596473628344/1080p.mp4" type="video/mp4" />
+            </video>
+            <canvas id="particle-canvas" class="inset-0 w-full h-full"></canvas>
+            <div class="hero-content absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-center items-center text-center px-4">
+                <h1 class="text-6xl md:text-8xl lg:text-9xl font-black uppercase hero-title">DJ VEX</h1>
+                <p class="text-xl md:text-2xl mt-4 font-light text-gray-300">Feel the Frequency</p>
+                <a href="#music" class="mt-8 inline-block bg-gradient-to-r from-red-500 to-indigo-600 text-white font-bold py-3 px-8 rounded-full glow-button">
+                    Explore the Sound
+                </a>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 lg:py-32">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    <div class="reveal">
+                        <img src="https://images.unsplash.com/photo-1519758958238-d78f5f142b78?q=80&w=600&auto=format&fit=crop" alt="DJ Vex" class="rounded-lg shadow-2xl mx-auto">
+                    </div>
+                    <div class="reveal">
+                        <h2 class="text-4xl lg:text-5xl font-bold mb-6">Behind The Decks</h2>
+                        <p class="text-lg text-gray-300 leading-relaxed">
+                            Experience the pulse of underground scenes, where sound meets soul and energy becomes electrifying. From dusk till dawn, DJ VEX crafts soundscapes that ignite dance floors around the world.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="music" class="py-20 lg:py-32 bg-[#121212]">
+            <div class="container mx-auto px-6 text-center">
+                <div class="reveal">
+                    <h2 class="text-4xl lg:text-5xl font-bold mb-6">Featured Playlist</h2>
+                    <p class="text-gray-400 mb-12">Curated sounds straight from the decks. Updated weekly.</p>
+                </div>
+                <div class="max-w-4xl mx-auto reveal">
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section id="tour" class="py-20 lg:py-32">
+            <div class="container mx-auto px-6" style="perspective: 1000px;">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-4xl lg:text-5xl font-bold">Tour Dates</h2>
+                    <p class="text-lg text-gray-400 mt-2">Catch me live in your city.</p>
+                </div>
+                <div class="max-w-4xl mx-auto reveal tour-card">
+                    <div class="glassmorphism rounded-lg overflow-hidden">
+                        <!-- Tour dates content here -->
+                        <div class="flex flex-col">
+                            <div class="flex justify-between items-center p-4 border-b border-gray-700/50 hover:bg-white/5 transition-colors">
+                                <div class="w-1/3"><p class="font-semibold text-lg">AUG 15, 2025</p></div>
+                                <div class="w-1/3 text-center"><p class="font-bold text-xl">SoundWave Festival</p></div>
+                                <div class="w-1/3 text-right"><p class="text-gray-400">New York, USA</p></div>
+                            </div>
+                            <div class="flex justify-between items-center p-4 border-b border-gray-700/50 hover:bg-white/5 transition-colors">
+                                <div class="w-1/3"><p class="font-semibold text-lg">SEP 02, 2025</p></div>
+                                <div class="w-1/3 text-center"><p class="font-bold text-xl">Club Elysium</p></div>
+                                <div class="w-1/3 text-right"><p class="text-gray-400">Berlin, Germany</p></div>
+                            </div>
+                            <div class="flex justify-between items-center p-4 border-b border-gray-700/50 hover:bg-white/5 transition-colors">
+                               <div class="w-1/3"><p class="font-semibold text-lg">OCT 21, 2025</p></div>
+                                <div class="w-1/3 text-center"><p class="font-bold text-xl">Electric Jungle</p></div>
+                                <div class="w-1/3 text-right"><p class="text-gray-400">Tokyo, Japan</p></div>
+                            </div>
+                             <div class="flex justify-between items-center p-4 hover:bg-white/5 transition-colors">
+                               <div class="w-1/3"><p class="font-semibold text-lg">NOV 18, 2025</p></div>
+                                <div class="w-1/3 text-center"><p class="font-bold text-xl">Warehouse Project</p></div>
+                                <div class="w-1/3 text-right"><p class="text-gray-400">London, UK</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 lg:py-32 text-center parallax-section">
+            <div class="container mx-auto px-6 reveal">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">Live Moments</h2>
+                <p class="text-lg text-gray-300 max-w-3xl mx-auto">Capturing the energy, the lights, and the unforgettable nights. A glimpse into the world of VEX.</p>
+            </div>
+        </section>
+
+        <section id="gallery" class="py-20 lg:py-32 bg-black">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="gallery-item relative rounded-lg overflow-hidden h-64 md:h-96 reveal">
+                        <div class="image-container w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1609333465558-7fe99e735e3d')"></div>
+                        <div class="overlay absolute inset-0"></div>
+                    </div>
+                    <div class="gallery-item relative rounded-lg overflow-hidden h-64 md:h-96 reveal col-span-1 md:col-span-2" style="transition-delay: 100ms;">
+                        <div class="image-container w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1516223725357-628a14a46b53?q=80&w=800&auto=format&fit=crop')"></div>
+                        <div class="overlay absolute inset-0"></div>
+                    </div>
+                    <div class="gallery-item relative rounded-lg overflow-hidden h-64 md:h-96 reveal" style="transition-delay: 200ms;">
+                        <div class="image-container w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1521336575822-6da63fb4543b')"></div>
+                        <div class="overlay absolute inset-0"></div>
+                    </div>
+                    <div class="gallery-item relative rounded-lg overflow-hidden h-64 md:h-96 reveal col-span-2 md:col-span-2" style="transition-delay: 300ms;">
+                        <div class="image-container w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=800&auto=format&fit=crop')"></div>
+                        <div class="overlay absolute inset-0"></div>
+                    </div>
+                    <div class="gallery-item relative rounded-lg overflow-hidden h-64 md:h-96 reveal" style="transition-delay: 400ms;">
+                        <div class="image-container w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1582736342623-9a31a515a5a7?q=80&w=600&auto=format&fit=crop')"></div>
+                        <div class="overlay absolute inset-0"></div>
+                    </div>
+                    <div class="gallery-item relative rounded-lg overflow-hidden h-64 md:h-96 reveal" style="transition-delay: 500ms;">
+                        <div class="image-container w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1506157786151-b8491531f063')"></div>
+                        <div class="overlay absolute inset-0"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="py-20 lg:py-40 bg-[#111]">
+            <div class="container mx-auto px-6 text-center reveal">
+                <h2 class="text-4xl lg:text-6xl font-bold">Book DJ VEX</h2>
+                <p class="text-lg text-gray-400 mt-4 mb-8 max-w-2xl mx-auto">Ready to electrify your event? Reach out now for bookings and collaborations.</p>
+                <a href="mailto:booking@djvex.com" class="inline-block bg-red-500 text-white font-bold py-4 px-8 rounded-full text-lg hover:bg-red-600 transition glow-button">
+                    booking@djvex.com
+                </a>
+                <div class="flex justify-center space-x-6 mt-10">
+                    <a href="#" class="text-3xl text-gray-400 hover:text-white"><i class="fab fa-soundcloud"></i></a>
+                    <a href="#" class="text-3xl text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-3xl text-gray-400 hover:text-white"><i class="fab fa-spotify"></i></a>
+                    <a href="#" class="text-3xl text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-8 px-6 text-center text-gray-600 border-t border-gray-800">
+        <p>&copy; 2025 DJ VEX. All Rights Reserved. Designed with passion.  </br> Build by Probin. knock me at probinmajumderr@gmail.com </p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                header.classList.toggle('bg-black', window.scrollY > 50);
+                header.classList.toggle('bg-opacity-80', window.scrollY > 50);
+                header.classList.toggle('backdrop-blur-sm', window.scrollY > 50);
+            });
+
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuBtn.addEventListener('click', () => {
+                const isHidden = mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+                document.body.style.overflow = !isHidden ? 'hidden' : 'auto';
+            });
+            mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+                document.body.style.overflow = 'auto';
+            }));
+
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                let delay = 0;
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                           entry.target.classList.add('active');
+                        }, delay);
+                        delay += 100; // Stagger effect for gallery
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // --- MUSIC NOTE PARTICLE EFFECT ---
+            const canvas = document.getElementById('particle-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            let particlesArray = [];
+            const musicalNotes = ['♪', '♫', '♬'];
+            const mouse = { x: null, y: null, radius: 80 };
+
+            window.addEventListener('mousemove', e => {
+                mouse.x = e.x;
+                mouse.y = e.y;
+            });
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                initParticles();
+            });
+
+            class Particle {
+                constructor(x, y, directionX, directionY, size, color, symbol) {
+                    this.x = x; this.y = y; this.directionX = directionX; this.directionY = directionY; this.size = size; this.color = color; this.symbol = symbol;
+                    this.originalSize = size;
+                    this.isGlowing = false;
+                    this.glowTimer = 0;
+                }
+                draw() {
+                    ctx.font = `${this.size}px Poppins`;
+                    if(this.isGlowing) {
+                        ctx.fillStyle = '#f87171'; // Glow color
+                        ctx.shadowColor = '#f87171';
+                        ctx.shadowBlur = 15;
+                    } else {
+                        ctx.fillStyle = this.color;
+                        ctx.shadowBlur = 0;
+                    }
+                    ctx.fillText(this.symbol, this.x, this.y);
+                    ctx.shadowBlur = 0; // Reset shadow for next particle
+                }
+                update() {
+                    if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
+                    if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
+                    
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < mouse.radius && !this.isGlowing) {
+                        this.isGlowing = true;
+                        this.glowTimer = 50; // frames
+                        this.size = this.originalSize * 2.5; // Pulse effect
+                    }
+
+                    if(this.isGlowing) {
+                        this.glowTimer--;
+                        this.size *= 0.98; // Shrink back
+                        if(this.glowTimer <= 0) {
+                            this.isGlowing = false;
+                            this.size = this.originalSize;
+                        }
+                    }
+
+                    this.x += this.directionX;
+                    this.y += this.directionY;
+                    this.draw();
+                }
+            }
+            function initParticles() {
+                particlesArray = [];
+                let numberOfParticles = (canvas.height * canvas.width) / 15000;
+                for (let i = 0; i < numberOfParticles; i++) {
+                    let size = (Math.random() * 10) + 10;
+                    let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+                    let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+                    let directionX = (Math.random() * 0.4) - 0.2;
+                    let directionY = (Math.random() * 0.4) - 0.2;
+                    let color = 'rgba(255, 255, 255, 0.4)';
+                    let symbol = musicalNotes[Math.floor(Math.random() * musicalNotes.length)];
+                    particlesArray.push(new Particle(x, y, directionX, directionY, size, color, symbol));
+                }
+            }
+            function animateParticles() {
+                requestAnimationFrame(animateParticles);
+                ctx.clearRect(0, 0, innerWidth, innerHeight);
+                for (let i = 0; i < particlesArray.length; i++) {
+                    particlesArray[i].update();
+                }
+            }
+            initParticles();
+            animateParticles();
+
+            // --- 3D TILT EFFECT ---
+            const tourCard = document.querySelector('.tour-card');
+            if (tourCard) {
+                tourCard.addEventListener('mousemove', e => {
+                    const rect = tourCard.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const { width, height } = rect;
+                    const rotateX = (y / height - 0.5) * -15; 
+                    const rotateY = (x / width - 0.5) * 15;  
+                    tourCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                });
+                tourCard.addEventListener('mouseleave', () => {
+                    tourCard.style.transform = 'rotateX(0deg) rotateY(0deg)';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
